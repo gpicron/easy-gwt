@@ -48,7 +48,7 @@ public class ApplicationController implements EntryPoint {
 		/**
 		 * Accordion View Sample
 		 */
-		AccordionViewPort accordionView = new AccordionViewPort();
+		AccordionViewPort accordionView = AccordionViewPort.getInstance();
 		
 		List<AccordionNavigationItemInterface> navigationItems = new ArrayList<AccordionNavigationItemInterface>();
 		
