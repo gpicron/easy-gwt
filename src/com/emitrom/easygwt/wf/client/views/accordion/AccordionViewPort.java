@@ -49,23 +49,32 @@ import com.google.gwt.user.client.ui.RootPanel;
  */
 public class AccordionViewPort extends Viewport {
 
+	private static AccordionViewPort accordionViewPort;
 	private AccordionNavigationPanel westPanel;
 	private AccordionCenterPanel centerPanel;
 	private AccordionNorthPanel northPanel;
 	private AccordionSouthPanel southPanel;
 	private List<AccordionNavigationItemInterface> navigationItems;
 	
-	public AccordionViewPort() {
-
+	public static AccordionViewPort getInstance() {
+		
+		if (accordionViewPort == null) {
+			accordionViewPort = new AccordionViewPort();
+		}
+		
+		return accordionViewPort;
+		
+	}
+	
+	private AccordionViewPort() {
 		super();
 		northPanel = new AccordionNorthPanel();
 		westPanel = new AccordionNavigationPanel();
 		centerPanel = new AccordionCenterPanel();
 		southPanel = new AccordionSouthPanel();
-		
+
 		RootPanel.get().add(this);
 		Util.getCss().accordionViewCss().ensureInjected();
-
 	}
 	
 	@Override
