@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<project name="easy-gwt" basedir=".">
+
+	<property file="ant.properties"/>
+	
+	<path id="project.class.path">
+		<fileset dir="lib" includes="**/*.jar"/>
+	</path>
+
+	<target name="compile-easy-gwt" description="Compile java source">
+		<mkdir dir="build/classes"/>
+		<javac srcdir="src/com/emitrom/easygwt/wf" includes="**" encoding="utf-8"
+        	destdir="build/classes"
+        	source="1.6" target="1.6" nowarn="true"
+        	debug="true" debuglevel="lines,vars,source">
+			<classpath refid="project.class.path"/>
+		</javac>
+		
+		<copy todir="build/classes/com/emitrom/easygwt/wf">
+			<fileset dir="src/com/emitrom/easygwt/wf">
+				<filename name="EasyGWT.gwt.xml"/>
+			</fileset>
+		</copy>
+
+		<copy todir="build/classes/com/emitrom/easygwt/wf/client">
+			<fileset dir="src/com/emitrom/easygwt/wf/client"/>
+		</copy>
+
+	</target>
+
+	<!--
+	<target name="javadocs" description="Generate EasyGWT Java Docs">
+	  <javadoc
+	           destdir="api"
+	           author="true"
+	           version="true"
+	           use="true"
+	           windowtitle="EasyGWT API ${easygwt-version}">
+
+	    <fileset dir="src/com/emitrom/easygwt/wf" defaultexcludes="yes">
+	      <include name="client/**"/>
+	    </fileset>
+
+	    <doctitle><![CDATA[<h1>EasyGWT API  ${easygwt-version}</h1>]]></doctitle>
+	    <bottom><![CDATA[<i>Copyright &#169; 2000 Emitrom LLC. All Rights Reserved.</i>]]></bottom>
+	    <tag name="todo" scope="all" description="To do:"/>
+	    <group title="Group 1 Packages" packages="com.dummy.test.a*"/>
+	    <group title="Group 2 Packages" packages="com.dummy.test.b*:com.dummy.test.c*"/>
+	    <link offline="true" href="http://download.oracle.com/javase/6/docs/api/" packagelistLoc="C:\tmp"/>
+	    <link href="http://developer.java.sun.com/developer/products/xml/docs/api/"/>
+	  </javadoc>
+	</target>
+	-->
+	
+	<target name="build-easy-gwt" depends="compile-easy-gwt" description="Creates the easy-gwt Jar">
+		<jar destfile="build/${ant.project.name}.${easygwt-version}.jar">
+			<fileset dir="build/classes"/>
+		</jar>
+		<delete dir="build/classes" failonerror="false" />
+	</target>
+
+	<target name="clean" description="Cleans this project">
+		<delete dir="build" failonerror="false" />
+	</target>
+
+</project>

@@ -1,0 +1,39 @@
+@external .wf-navigation-*;
+
+.wf-navigation-item .x-view-item {
+	padding: 0 0 0 5px;
+	color: #325578;
+	font-family: "segoe UI,tahoma,arial,helvetica,sans-serif";
+	font-weight: normal;
+	line-height: 19px;
+	border: 0;
+	margin-bottom: -1px;
+    margin-right: 4px;
+    margin-top: -1px;
+}
+
+.wf-navigation-item .x-view-item-sel {
+	font-weight: bold;
+	border: 0 !important;
+}
+
+.wf-navigation-item .x-view-item-over {
+	font-weight: bold;
+	background: none;
+	border: 0 !important;
+	color: #008E00;
+}
+
+.wf-navigation-panel-header .x-panel-header {
+	font-weight: bold;
+}
+
+.wf-navigation-item img {
+	    vertical-align: middle;
+	    padding-right: 5px;
+}
+
+.wf-navigation-x-panel-header-text .x-panel-header img {
+	    vertical-align: middle;
+	    padding-right: 5px;
+}	
