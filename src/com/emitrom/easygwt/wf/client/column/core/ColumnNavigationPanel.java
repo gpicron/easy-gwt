@@ -18,31 +18,34 @@
  ******************************************************************************/
 package com.emitrom.easygwt.wf.client.column.core;
 
-import com.extjs.gxt.ui.client.widget.LayoutContainer;
+import com.extjs.gxt.ui.client.widget.ContentPanel;
+import com.extjs.gxt.ui.client.widget.layout.AccordionLayout;
 
 /**
- * Abstract implementation of the AccordionViewInterface.
+ * This Panel holds all the Navigation Parents as well as the 
+ * children associated with them.
+ * 
+ * It uses an Accordion Layout to render its elements.
  * 
  * @author Alfredo Quiroga-Villamil
  *
  */
-public abstract class AccordionView extends LayoutContainer implements AccordionViewInterface {
+public class ColumnNavigationPanel extends ContentPanel implements ColumnPanelInterface {
 
-	private static final long serialVersionUID = 2464515645533609874L;
-	private String heading;
+	private AccordionLayout navigationPanelLayout;
 	
-	@Override
-	public void prepareToHideView() {}
-
-	@Override
-	public void prepareToShowView() {}
-	
-	public String getHeading() {
-		return heading;
+	public ColumnNavigationPanel() {
+		super();
+		navigationPanelLayout = new AccordionLayout();
+		setLayout(navigationPanelLayout);
 	}
-	
-	public void setHeading(String heading) {
-		this.heading = heading;
+
+	public AccordionLayout getNavigationPanelLayout() {
+		return navigationPanelLayout;
+	}
+
+	public void setNavigationPanelLayout(AccordionLayout navigationPanelLayout) {
+		this.navigationPanelLayout = navigationPanelLayout;
 	}
 	
 }

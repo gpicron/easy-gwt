@@ -41,7 +41,7 @@ import com.google.gwt.user.client.ui.Image;
  * @author Alfredo Quiroga-Villamil
  *
  */
-public class AccordionNorthPanel extends ContentPanel implements AccordionPanelInterface {
+public class ColumnNorthPanel extends ContentPanel implements ColumnPanelInterface {
 
 	private ToolBar northPanelToolBar;
 	private Button settingsButton;
@@ -61,7 +61,7 @@ public class AccordionNorthPanel extends ContentPanel implements AccordionPanelI
 	private static final String GXT_ACCESS_CSS_PATH = "resources/gxt/themes/access/css/xtheme-access.css";
 	private static final String GXT_ACCESS_CSS_ID = "gxt-access";
 	
-	public AccordionNorthPanel() {
+	public ColumnNorthPanel() {
 		
 		super();
 		setHeaderVisible(false);

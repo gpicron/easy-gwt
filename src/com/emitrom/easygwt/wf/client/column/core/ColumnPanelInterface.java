@@ -23,6 +23,6 @@ package com.emitrom.easygwt.wf.client.column.core;
  * @author Alfredo Quiroga-Villamil
  *
  */
-public interface AccordionPanelInterface {
+public interface ColumnPanelInterface {
 	
 }

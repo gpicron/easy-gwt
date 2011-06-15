@@ -18,18 +18,12 @@
  ******************************************************************************/
 package com.emitrom.easygwt.wf.client.column.core;
 
-import java.io.Serializable;
-
 /**
- * Accordion View Interface.
+ * Used as a Tag for all Navigation Items
  * 
  * @author Alfredo Quiroga-Villamil
  *
  */
-public interface AccordionViewInterface extends Serializable {
-
-	public void prepareToShowView();
-	public void prepareToHideView();
-	public void onRender();
+public interface ColumnNavigationItemInterface {
 
 }

@@ -21,8 +21,8 @@ package com.emitrom.easygwt.wf.client.column.core;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.emitrom.easygwt.wf.client.column.events.AccordionCenterPanelAddViewEvent;
-import com.emitrom.easygwt.wf.client.column.events.AccordionCenterPanelSelectViewEvent;
+import com.emitrom.easygwt.wf.client.column.events.ColumnCenterPanelAddViewEvent;
+import com.emitrom.easygwt.wf.client.column.events.ColumnCenterPanelSelectViewEvent;
 import com.emitrom.easygwt.wf.client.events.EventsBus;
 import com.extjs.gxt.ui.client.Style.Scroll;
 import com.extjs.gxt.ui.client.widget.ContentPanel;
@@ -36,20 +36,20 @@ import com.extjs.gxt.ui.client.widget.layout.CardLayout;
  * @author Alfredo Quiroga-Villamil
  *
  */
-public class AccordionCenterPanel extends ContentPanel implements AccordionPanelInterface {
+public class ColumnCenterPanel extends ContentPanel implements ColumnPanelInterface {
 
 	private CardLayout centerCardLayout;
-	private	AccordionViewInterface selectedViewItem;
+	private	ColumnViewInterface selectedViewItem;
 	private boolean defaultViewRendered = false;
-	private Set<AccordionViewInterface> renderedViews;
+	private Set<ColumnViewInterface> renderedViews;
 	
-	public AccordionCenterPanel() {
+	public ColumnCenterPanel() {
 		
 		super();
 		setScrollMode(Scroll.AUTOX);
 		centerCardLayout = new CardLayout();
 		setLayout(centerCardLayout);
-		renderedViews = new HashSet<AccordionViewInterface>();
+		renderedViews = new HashSet<ColumnViewInterface>();
 		setStyleName("wf-navigation-x-panel-header-text");
 		
 	}
@@ -65,18 +65,18 @@ public class AccordionCenterPanel extends ContentPanel implements AccordionPanel
 		/**
 		 * CenterPanelAddViewEvent
 		 */
-		EventsBus.getEventBus().addHandler(AccordionCenterPanelAddViewEvent.TYPE, 
-			   new AccordionCenterPanelAddViewEvent.Handler() {
+		EventsBus.getEventBus().addHandler(ColumnCenterPanelAddViewEvent.TYPE, 
+			   new ColumnCenterPanelAddViewEvent.Handler() {
 
 			@Override
-			public void onAddViewEvent(AccordionCenterPanelAddViewEvent event) {
+			public void onAddViewEvent(ColumnCenterPanelAddViewEvent event) {
 				
 				add((LayoutContainer) event.getViewItem());
 				
 				if (!defaultViewRendered) {
-					setHeading(((AccordionView) event.getViewItem()).getHeading());
-					renderedViews.add((AccordionViewInterface) event.getViewItem());
-					((AccordionViewInterface) event.getViewItem()).onRender();
+					setHeading(((ColumnView) event.getViewItem()).getHeading());
+					renderedViews.add((ColumnViewInterface) event.getViewItem());
+					((ColumnViewInterface) event.getViewItem()).onRender();
 					defaultViewRendered = true;
 				}
 				
@@ -87,38 +87,38 @@ public class AccordionCenterPanel extends ContentPanel implements AccordionPanel
 		/**
 		 * CenterPanelSelectViewEvent
 		 */
-		EventsBus.getEventBus().addHandler(AccordionCenterPanelSelectViewEvent.TYPE, 
-				new AccordionCenterPanelSelectViewEvent.Handler() {
+		EventsBus.getEventBus().addHandler(ColumnCenterPanelSelectViewEvent.TYPE, 
+				new ColumnCenterPanelSelectViewEvent.Handler() {
 					
 			@Override
-			public void onSelectViewEvent(AccordionCenterPanelSelectViewEvent event) {
+			public void onSelectViewEvent(ColumnCenterPanelSelectViewEvent event) {
 
 				/**
 				 * Call prepareToHideView
 				 */
 				if (selectedViewItem != null) {
-					((AccordionViewInterface) selectedViewItem).prepareToHideView();
+					((ColumnViewInterface) selectedViewItem).prepareToHideView();
 				}
 				
 				/**
 				 * Call prepareToShowView
 				 */
-				((AccordionViewInterface) event.getViewItem()).prepareToShowView();
+				((ColumnViewInterface) event.getViewItem()).prepareToShowView();
 				
 				/**
 				 * Show the view and set the selected view item
 				 */
 				LayoutContainer viewItem = (LayoutContainer) event.getViewItem();
 				centerCardLayout.setActiveItem(viewItem);
-				setHeading(((AccordionView) event.getViewItem()).getHeading());
-				selectedViewItem = (AccordionViewInterface) viewItem;
+				setHeading(((ColumnView) event.getViewItem()).getHeading());
+				selectedViewItem = (ColumnViewInterface) viewItem;
 				
 				/**
 				 * Call onRender only once
 				 */
 				if (!renderedViews.contains(selectedViewItem)) {
-					renderedViews.add((AccordionViewInterface) selectedViewItem);
-					((AccordionViewInterface) selectedViewItem).onRender();
+					renderedViews.add((ColumnViewInterface) selectedViewItem);
+					((ColumnViewInterface) selectedViewItem).onRender();
 					viewItem.layout();
 				}
 

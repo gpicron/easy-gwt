@@ -20,8 +20,8 @@ package com.emitrom.easygwt.wf.client.column.core;
 
 import java.util.List;
 
-import com.emitrom.easygwt.wf.client.column.events.AccordionCenterPanelAddViewEvent;
-import com.emitrom.easygwt.wf.client.column.events.AccordionCenterPanelSelectViewEvent;
+import com.emitrom.easygwt.wf.client.column.events.ColumnCenterPanelAddViewEvent;
+import com.emitrom.easygwt.wf.client.column.events.ColumnCenterPanelSelectViewEvent;
 import com.emitrom.easygwt.wf.client.events.EventsBus;
 import com.emitrom.easygwt.wf.utils.Util;
 import com.extjs.gxt.ui.client.Style.LayoutRegion;
@@ -47,31 +47,31 @@ import com.google.gwt.user.client.ui.RootPanel;
  * @author Alfredo Quiroga-Villamil
  *
  */
-public class AccordionViewPort extends Viewport {
+public class ColumnViewPort extends Viewport {
 
-	private static AccordionViewPort accordionViewPort;
-	private AccordionNavigationPanel westPanel;
-	private AccordionCenterPanel centerPanel;
-	private AccordionNorthPanel northPanel;
-	private AccordionSouthPanel southPanel;
-	private List<AccordionNavigationItemInterface> navigationItems;
+	private static ColumnViewPort columnViewPort;
+	private ColumnNavigationPanel westPanel;
+	private ColumnCenterPanel centerPanel;
+	private ColumnNorthPanel northPanel;
+	private ColumnSouthPanel southPanel;
+	private List<ColumnNavigationItemInterface> navigationItems;
 	
-	public static AccordionViewPort getInstance() {
+	public static ColumnViewPort getInstance() {
 		
-		if (accordionViewPort == null) {
-			accordionViewPort = new AccordionViewPort();
+		if (columnViewPort == null) {
+			columnViewPort = new ColumnViewPort();
 		}
 		
-		return accordionViewPort;
+		return columnViewPort;
 		
 	}
 	
-	private AccordionViewPort() {
+	private ColumnViewPort() {
 		super();
-		northPanel = new AccordionNorthPanel();
-		westPanel = new AccordionNavigationPanel();
-		centerPanel = new AccordionCenterPanel();
-		southPanel = new AccordionSouthPanel();
+		northPanel = new ColumnNorthPanel();
+		westPanel = new ColumnNavigationPanel();
+		centerPanel = new ColumnCenterPanel();
+		southPanel = new ColumnSouthPanel();
 
 		RootPanel.get().add(this);
 		Util.getCss().accordionViewCss().ensureInjected();
@@ -113,35 +113,35 @@ public class AccordionViewPort extends Viewport {
 	/**
 	 * @return the westPanel
 	 */
-	public AccordionNavigationPanel getWestPanel() {
+	public ColumnNavigationPanel getWestPanel() {
 		return westPanel;
 	}
 
 	/**
 	 * @return the centerPanel
 	 */
-	public AccordionCenterPanel getCenterPanel() {
+	public ColumnCenterPanel getCenterPanel() {
 		return centerPanel;
 	}
 
 	/**
 	 * @return the northPanel
 	 */
-	public AccordionNorthPanel getNorthPanel() {
+	public ColumnNorthPanel getNorthPanel() {
 		return northPanel;
 	}
 
 	/**
 	 * @return the southPanel
 	 */
-	public AccordionSouthPanel getSouthPanel() {
+	public ColumnSouthPanel getSouthPanel() {
 		return southPanel;
 	}
 
 	/**
 	 * @return the navigationItems
 	 */
-	public List<AccordionNavigationItemInterface> getNavigationItems() {
+	public List<ColumnNavigationItemInterface> getNavigationItems() {
 		return navigationItems;
 	}
 
@@ -153,23 +153,23 @@ public class AccordionViewPort extends Viewport {
 	 * @param applicationNavigationItems
 	 * 
 	 */
-	public void addNavigationItems(List<AccordionNavigationItemInterface> applicationNavigationItems) {
+	public void addNavigationItems(List<ColumnNavigationItemInterface> applicationNavigationItems) {
 		
 		this.navigationItems = applicationNavigationItems;
 		
-		for (AccordionNavigationItemInterface applicationNavigationItem : applicationNavigationItems) {
+		for (ColumnNavigationItemInterface applicationNavigationItem : applicationNavigationItems) {
 			
 			westPanel.add((ContentPanel) applicationNavigationItem);
 			
 			/**
 			 * Add all Navigation Children to the Center Panel Card Layout
 			 */
-			ListView<AccordionNavigationChild> navigationChildren = 
-				((AccordionNavigationParent) applicationNavigationItem).getApplicationNavigationItemListView();
+			ListView<ColumnNavigationChild> navigationChildren = 
+				((ColumnNavigationParent) applicationNavigationItem).getApplicationNavigationItemListView();
 			
-			for (AccordionNavigationChild navigationChild : navigationChildren.getStore().getModels()) {
+			for (ColumnNavigationChild navigationChild : navigationChildren.getStore().getModels()) {
 				EventsBus.getEventBus().fireEvent(
-					new AccordionCenterPanelAddViewEvent(navigationChild.getNavigationView())
+					new ColumnCenterPanelAddViewEvent(navigationChild.getNavigationView())
 				);
 			}
 			
@@ -187,16 +187,16 @@ public class AccordionViewPort extends Viewport {
 	 */
 	public void selectView(String view) {
 
-		for (final AccordionNavigationItemInterface appplicationNavigationParent : navigationItems) {
+		for (final ColumnNavigationItemInterface appplicationNavigationParent : navigationItems) {
 			
-			final AccordionNavigationParent appplicationNavigation =  (AccordionNavigationParent) appplicationNavigationParent;
+			final ColumnNavigationParent appplicationNavigation =  (ColumnNavigationParent) appplicationNavigationParent;
 			
-			List<AccordionNavigationChild> appNavChildModelList = appplicationNavigation.
+			List<ColumnNavigationChild> appNavChildModelList = appplicationNavigation.
 																				getApplicationNavigationItemListView().
 																				getStore().
 																				getModels();
 			
-			for (final AccordionNavigationChild applicationNavigationChild : appNavChildModelList) {
+			for (final ColumnNavigationChild applicationNavigationChild : appNavChildModelList) {
 				
 				String navigationView = applicationNavigationChild.getNavigationView().getClass().getName();
 				
@@ -209,8 +209,8 @@ public class AccordionViewPort extends Viewport {
 							
 							appplicationNavigation.expand();
 							
-							ListStore<AccordionNavigationChild> applicationNavigationItemStore = 
-								((AccordionNavigationParent) appplicationNavigationParent).
+							ListStore<ColumnNavigationChild> applicationNavigationItemStore = 
+								((ColumnNavigationParent) appplicationNavigationParent).
 																getApplicationNavigationItemListView().
 																getStore();
 							
@@ -218,7 +218,7 @@ public class AccordionViewPort extends Viewport {
 							
 							appplicationNavigation.getApplicationNavigationItemListView().getSelectionModel().select(indexOfListView, false);
 							EventsBus.getEventBus().fireEvent(
-								new AccordionCenterPanelSelectViewEvent(applicationNavigationChild.getNavigationView()));
+								new ColumnCenterPanelSelectViewEvent(applicationNavigationChild.getNavigationView()));
 
 							
 						}
