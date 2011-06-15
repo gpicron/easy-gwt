@@ -16,23 +16,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/
  ******************************************************************************/
-package com.emitrom.easygwt.wf.client.column.views;
-
-import com.extjs.gxt.ui.client.widget.ContentPanel;
+package com.emitrom.easygwt.wf.client.column.core;
 
 /**
- * South Panel for EasyGWT.
+ * Used as a Tag for all Navigation Items
  * 
  * @author Alfredo Quiroga-Villamil
  *
  */
-public class AccordionSouthPanel extends ContentPanel implements AccordionPanelInterface {
+public interface AccordionNavigationItemInterface {
 
-	public AccordionSouthPanel() {
-		super();
-		setHeaderVisible(false);
-		setBodyBorder(false);
-		setFrame(true);
-	}
-	
 }

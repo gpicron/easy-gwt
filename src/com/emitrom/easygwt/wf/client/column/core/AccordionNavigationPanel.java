@@ -16,14 +16,36 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/
  ******************************************************************************/
-package com.emitrom.easygwt.wf.client.column.views;
+package com.emitrom.easygwt.wf.client.column.core;
+
+import com.extjs.gxt.ui.client.widget.ContentPanel;
+import com.extjs.gxt.ui.client.widget.layout.AccordionLayout;
 
 /**
- * Used as a Tag for all Navigation Items
+ * This Panel holds all the Navigation Parents as well as the 
+ * children associated with them.
+ * 
+ * It uses an Accordion Layout to render its elements.
  * 
  * @author Alfredo Quiroga-Villamil
  *
  */
-public interface AccordionNavigationItemInterface {
+public class AccordionNavigationPanel extends ContentPanel implements AccordionPanelInterface {
 
+	private AccordionLayout navigationPanelLayout;
+	
+	public AccordionNavigationPanel() {
+		super();
+		navigationPanelLayout = new AccordionLayout();
+		setLayout(navigationPanelLayout);
+	}
+
+	public AccordionLayout getNavigationPanelLayout() {
+		return navigationPanelLayout;
+	}
+
+	public void setNavigationPanelLayout(AccordionLayout navigationPanelLayout) {
+		this.navigationPanelLayout = navigationPanelLayout;
+	}
+	
 }

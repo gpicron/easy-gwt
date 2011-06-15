@@ -16,9 +16,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/
  ******************************************************************************/
-package com.emitrom.easygwt.wf.client.column.views;
+package com.emitrom.easygwt.wf.client.column.core;
 
-import com.emitrom.easygwt.wf.client.column.util.Util;
+import com.emitrom.easygwt.wf.utils.Util;
 import com.extjs.gxt.ui.client.event.Events;
 import com.extjs.gxt.ui.client.event.Listener;
 import com.extjs.gxt.ui.client.event.MenuEvent;
