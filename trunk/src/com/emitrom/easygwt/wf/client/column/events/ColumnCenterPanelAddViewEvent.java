@@ -18,44 +18,45 @@
  ******************************************************************************/
 package com.emitrom.easygwt.wf.client.column.events;
 
-import com.emitrom.easygwt.wf.client.column.core.AccordionViewInterface;
+import com.emitrom.easygwt.wf.client.column.core.ColumnViewInterface;
 import com.emitrom.easygwt.wf.client.events.EventsHandler;
 import com.emitrom.easygwt.wf.client.events.EventsType;
 import com.google.gwt.event.shared.EventHandler;
 
 /**
- * Center Panel Select Event.
+ * Center Panel Add Event.
  * 
- * Triggers a selection of the view in the Card Layout for the Center Panel.
+ * The Center Panel handler will handle this event and add the view to the card layout for the Center Panel.
+ * 
  * 
  * @author Alfredo Quiroga-Villamil
  *
  */
-public class AccordionCenterPanelSelectViewEvent extends EventsHandler<AccordionCenterPanelSelectViewEvent.Handler,
-													AccordionCenterPanelSelectViewEvent.Type> {
+public class ColumnCenterPanelAddViewEvent extends EventsHandler<ColumnCenterPanelAddViewEvent.Handler,
+												ColumnCenterPanelAddViewEvent.Type> {
 
-	private AccordionViewInterface viewItem;
+	private ColumnViewInterface viewItem;
 	
 	public interface Handler extends EventHandler {
-		void onSelectViewEvent(AccordionCenterPanelSelectViewEvent event);
+		void onAddViewEvent(ColumnCenterPanelAddViewEvent event);
 	}
 
 	public static Type TYPE = new Type();
 	
-	public AccordionCenterPanelSelectViewEvent(AccordionViewInterface viewItem) {
+	public ColumnCenterPanelAddViewEvent(ColumnViewInterface viewItem) {
 		super(TYPE);
 		this.viewItem = viewItem;
 	}
 
-	public AccordionViewInterface getViewItem() {
+	public ColumnViewInterface getViewItem() {
 		return viewItem;
 	}
 
-	protected static class Type extends EventsType<AccordionCenterPanelSelectViewEvent.Handler> {}
+	protected static class Type extends EventsType<ColumnCenterPanelAddViewEvent.Handler> {}
 
 	@Override
-	protected void dispatch(AccordionCenterPanelSelectViewEvent.Handler handler) {
-		handler.onSelectViewEvent(this);
+	protected void dispatch(ColumnCenterPanelAddViewEvent.Handler handler) {
+		handler.onAddViewEvent(this);
 	}
-
+	
 }
