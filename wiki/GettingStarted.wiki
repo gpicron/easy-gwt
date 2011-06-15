@@ -1,3 +1,5 @@
+#summary Getting Started Quickly.
+
 = Introduction =
 
 Add your content here.
