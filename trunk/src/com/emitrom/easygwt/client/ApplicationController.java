@@ -8,10 +8,9 @@ import com.emitrom.easygwt.client.core.gwtrpc.SampleServiceAsync;
 import com.emitrom.easygwt.client.core.injection.SampleInjector;
 import com.emitrom.easygwt.client.resources.SampleIcons;
 import com.emitrom.easygwt.client.resources.I18N.SampleConstants;
-import com.emitrom.easygwt.wf.client.column.core.AccordionNavigationChild;
-import com.emitrom.easygwt.wf.client.column.core.AccordionNavigationItemInterface;
-import com.emitrom.easygwt.wf.client.column.core.AccordionNavigationParent;
-import com.emitrom.easygwt.wf.client.column.core.AccordionViewPort;
+import com.emitrom.easygwt.wf.client.column.core.ColumnNavigationChild;
+import com.emitrom.easygwt.wf.client.column.core.ColumnNavigationParent;
+import com.emitrom.easygwt.wf.client.column.core.ColumnViewPort;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -46,44 +45,44 @@ public class ApplicationController implements EntryPoint {
 		});
 		
 		/**
-		 * Accordion View Sample
+		 * Column View Sample
 		 */
-		AccordionViewPort accordionView = AccordionViewPort.getInstance();
+		ColumnViewPort columnView = ColumnViewPort.getInstance();
 		
-		List<AccordionNavigationItemInterface> navigationItems = new ArrayList<AccordionNavigationItemInterface>();
+		List<ColumnNavigationParent> navigationParentsList = new ArrayList<ColumnNavigationParent>();
 		
-		AccordionNavigationParent parent1 = new AccordionNavigationParent();
+		ColumnNavigationParent parent1 = new ColumnNavigationParent();
 		parent1.setHeading(constants.parentOne());
 		parent1.setIcon(AbstractImagePrototype.create(icons.chartBar()));
 		
-		AccordionNavigationChild parent1Child1 = new AccordionNavigationChild(injector.getMyView(), 
+		ColumnNavigationChild parent1Child1 = new ColumnNavigationChild(injector.getMyView(), 
 				constants.parentOneChildOne());
 		parent1Child1.setIcon(icons.chartBar());
 		parent1.addNavigationChild(parent1Child1);
 		
-		AccordionNavigationChild parent1Child2 = new AccordionNavigationChild(injector.getMyView(), 
+		ColumnNavigationChild parent1Child2 = new ColumnNavigationChild(injector.getMyView(), 
 				constants.parentOneChildTwo());
 		parent1Child2.setIcon(icons.chartBar());
 		parent1.addNavigationChild(parent1Child2);
 
-		AccordionNavigationParent parent2 = new AccordionNavigationParent();
+		ColumnNavigationParent parent2 = new ColumnNavigationParent();
 		parent2.setHeading(constants.parentTwo());
 		parent2.setIcon(AbstractImagePrototype.create(icons.chartBar()));
 		
-		AccordionNavigationChild parent2Child1 = new AccordionNavigationChild(injector.getMyView(), 
+		ColumnNavigationChild parent2Child1 = new ColumnNavigationChild(injector.getMyView(), 
 				constants.parentTwoChildOne());
 		parent2Child1.setIcon(icons.chartBar());
 		parent2.addNavigationChild(parent2Child1);
 		
-		AccordionNavigationChild parent2Child2 = new AccordionNavigationChild(injector.getMyView(), 
+		ColumnNavigationChild parent2Child2 = new ColumnNavigationChild(injector.getMyView(), 
 				constants.parentTwoChildTwo());
 		parent2Child2.setIcon(icons.chartBar());
 		parent2.addNavigationChild(parent2Child2);
 
-		navigationItems.add(parent1);
-		navigationItems.add(parent2);
+		navigationParentsList.add(parent1);
+		navigationParentsList.add(parent2);
 
-		accordionView.addNavigationItems(navigationItems);
+		columnView.addNavigationItems(navigationParentsList);
 		
 	}
 	

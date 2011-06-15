@@ -33,6 +33,6 @@ public interface CSS extends ClientBundle {
 	
 	@NotStrict
 	@Source("css/accordion_view.css")
-	public CssResource accordionViewCss();
+	public CssResource columnViewCss();
 
 }

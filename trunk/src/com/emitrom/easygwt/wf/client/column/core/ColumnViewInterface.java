@@ -21,7 +21,7 @@ package com.emitrom.easygwt.wf.client.column.core;
 import java.io.Serializable;
 
 /**
- * Accordion View Interface.
+ * Column View Interface.
  * 
  * @author Alfredo Quiroga-Villamil
  *

@@ -18,7 +18,7 @@
 package com.emitrom.easygwt.wf.client.column.core;
 
 /**
- * Accordion Panel's Marker interface
+ * Column Panel's Marker interface
  * 
  * @author Alfredo Quiroga-Villamil
  *
