@@ -16,14 +16,20 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/
  ******************************************************************************/
-package com.emitrom.easygwt.wf.client.views.accordion;
+package com.emitrom.easygwt.wf.client.views.column;
+
+import java.io.Serializable;
 
 /**
- * Used as a Tag for all Navigation Items
+ * Accordion View Interface.
  * 
  * @author Alfredo Quiroga-Villamil
  *
  */
-public interface AccordionNavigationItemInterface {
+public interface AccordionViewInterface extends Serializable {
+
+	public void prepareToShowView();
+	public void prepareToHideView();
+	public void onRender();
 
 }

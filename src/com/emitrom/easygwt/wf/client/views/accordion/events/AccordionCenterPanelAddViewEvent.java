@@ -20,7 +20,7 @@ package com.emitrom.easygwt.wf.client.views.accordion.events;
 
 import com.emitrom.easygwt.wf.client.events.EventsHandler;
 import com.emitrom.easygwt.wf.client.events.EventsType;
-import com.emitrom.easygwt.wf.client.views.accordion.AccordionViewInterface;
+import com.emitrom.easygwt.wf.client.views.column.AccordionViewInterface;
 import com.google.gwt.event.shared.EventHandler;
 
 /**
