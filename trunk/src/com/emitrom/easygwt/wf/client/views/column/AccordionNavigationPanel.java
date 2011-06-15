@@ -16,33 +16,36 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/
  ******************************************************************************/
-package com.emitrom.easygwt.wf.client.views.accordion;
+package com.emitrom.easygwt.wf.client.views.column;
 
-import com.extjs.gxt.ui.client.widget.LayoutContainer;
+import com.extjs.gxt.ui.client.widget.ContentPanel;
+import com.extjs.gxt.ui.client.widget.layout.AccordionLayout;
 
 /**
- * Abstract implementation of the AccordionViewInterface.
+ * This Panel holds all the Navigation Parents as well as the 
+ * children associated with them.
+ * 
+ * It uses an Accordion Layout to render its elements.
  * 
  * @author Alfredo Quiroga-Villamil
  *
  */
-public abstract class AccordionView extends LayoutContainer implements AccordionViewInterface {
+public class AccordionNavigationPanel extends ContentPanel implements AccordionPanelInterface {
 
-	private static final long serialVersionUID = 2464515645533609874L;
-	private String heading;
+	private AccordionLayout navigationPanelLayout;
 	
-	@Override
-	public void prepareToHideView() {}
-
-	@Override
-	public void prepareToShowView() {}
-	
-	public String getHeading() {
-		return heading;
+	public AccordionNavigationPanel() {
+		super();
+		navigationPanelLayout = new AccordionLayout();
+		setLayout(navigationPanelLayout);
 	}
-	
-	public void setHeading(String heading) {
-		this.heading = heading;
+
+	public AccordionLayout getNavigationPanelLayout() {
+		return navigationPanelLayout;
+	}
+
+	public void setNavigationPanelLayout(AccordionLayout navigationPanelLayout) {
+		this.navigationPanelLayout = navigationPanelLayout;
 	}
 	
 }
