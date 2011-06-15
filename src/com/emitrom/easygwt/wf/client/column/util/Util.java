@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/
  ******************************************************************************/
-package com.emitrom.easygwt.wf.client.views.accordion.util;
+package com.emitrom.easygwt.wf.client.column.util;
 
 import com.emitrom.easygwt.wf.client.resources.CSS;
 import com.emitrom.easygwt.wf.client.resources.Icons;

@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/
  ******************************************************************************/
-package com.emitrom.easygwt.wf.client.views.column;
+package com.emitrom.easygwt.wf.client.column.views;
 
 import com.extjs.gxt.ui.client.data.BaseModelData;
 import com.google.gwt.resources.client.ImageResource;

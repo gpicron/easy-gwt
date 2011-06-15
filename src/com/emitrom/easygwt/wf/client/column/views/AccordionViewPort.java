@@ -16,14 +16,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/
  ******************************************************************************/
-package com.emitrom.easygwt.wf.client.views.column;
+package com.emitrom.easygwt.wf.client.column.views;
 
 import java.util.List;
 
+import com.emitrom.easygwt.wf.client.column.events.AccordionCenterPanelAddViewEvent;
+import com.emitrom.easygwt.wf.client.column.events.AccordionCenterPanelSelectViewEvent;
+import com.emitrom.easygwt.wf.client.column.util.Util;
 import com.emitrom.easygwt.wf.client.events.EventsBus;
-import com.emitrom.easygwt.wf.client.views.accordion.events.AccordionCenterPanelAddViewEvent;
-import com.emitrom.easygwt.wf.client.views.accordion.events.AccordionCenterPanelSelectViewEvent;
-import com.emitrom.easygwt.wf.client.views.accordion.util.Util;
 import com.extjs.gxt.ui.client.Style.LayoutRegion;
 import com.extjs.gxt.ui.client.store.ListStore;
 import com.extjs.gxt.ui.client.util.Margins;
