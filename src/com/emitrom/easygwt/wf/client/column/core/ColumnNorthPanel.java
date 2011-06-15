@@ -18,7 +18,7 @@
  ******************************************************************************/
 package com.emitrom.easygwt.wf.client.column.core;
 
-import com.emitrom.easygwt.wf.utils.Util;
+import com.emitrom.easygwt.wf.client.utils.Util;
 import com.extjs.gxt.ui.client.event.Events;
 import com.extjs.gxt.ui.client.event.Listener;
 import com.extjs.gxt.ui.client.event.MenuEvent;

@@ -23,7 +23,7 @@ import java.util.List;
 import com.emitrom.easygwt.wf.client.column.events.ColumnCenterPanelAddViewEvent;
 import com.emitrom.easygwt.wf.client.column.events.ColumnCenterPanelSelectViewEvent;
 import com.emitrom.easygwt.wf.client.events.EventsBus;
-import com.emitrom.easygwt.wf.utils.Util;
+import com.emitrom.easygwt.wf.client.utils.Util;
 import com.extjs.gxt.ui.client.Style.LayoutRegion;
 import com.extjs.gxt.ui.client.store.ListStore;
 import com.extjs.gxt.ui.client.util.Margins;
@@ -54,7 +54,7 @@ public class ColumnViewPort extends Viewport {
 	private ColumnCenterPanel centerPanel;
 	private ColumnNorthPanel northPanel;
 	private ColumnSouthPanel southPanel;
-	private List<ColumnNavigationItemInterface> navigationItems;
+	private List<ColumnNavigationParent> navigationParents;
 	
 	public static ColumnViewPort getInstance() {
 		
@@ -74,7 +74,7 @@ public class ColumnViewPort extends Viewport {
 		southPanel = new ColumnSouthPanel();
 
 		RootPanel.get().add(this);
-		Util.getCss().accordionViewCss().ensureInjected();
+		Util.getCss().columnViewCss().ensureInjected();
 	}
 	
 	@Override
@@ -139,33 +139,33 @@ public class ColumnViewPort extends Viewport {
 	}
 
 	/**
-	 * @return the navigationItems
+	 * @return the navigationParents
 	 */
-	public List<ColumnNavigationItemInterface> getNavigationItems() {
-		return navigationItems;
+	public List<ColumnNavigationParent> getNavigationParents() {
+		return navigationParents;
 	}
 
 	/**
-	 * <li> Adds a list of Navigation Items to the West Panel (Accordion Layout) <br/>
+	 * <li> Adds a list of Navigation Parents to the West Panel (Accordion Layout) <br/>
 	 * 
 	 * <li> Adds all Navigation children's view to the CenterPanel (Card Layout)
 	 * 
-	 * @param applicationNavigationItems
+	 * @param navigationParents
 	 * 
 	 */
-	public void addNavigationItems(List<ColumnNavigationItemInterface> applicationNavigationItems) {
+	public void addNavigationItems(List<ColumnNavigationParent> navigationParents) {
 		
-		this.navigationItems = applicationNavigationItems;
+		this.navigationParents = navigationParents;
 		
-		for (ColumnNavigationItemInterface applicationNavigationItem : applicationNavigationItems) {
+		for (ColumnNavigationParent navigationParent : navigationParents) {
 			
-			westPanel.add((ContentPanel) applicationNavigationItem);
+			westPanel.add((ContentPanel) navigationParent);
 			
 			/**
 			 * Add all Navigation Children to the Center Panel Card Layout
 			 */
 			ListView<ColumnNavigationChild> navigationChildren = 
-				((ColumnNavigationParent) applicationNavigationItem).getApplicationNavigationItemListView();
+				navigationParent.getApplicationNavigationItemListView();
 			
 			for (ColumnNavigationChild navigationChild : navigationChildren.getStore().getModels()) {
 				EventsBus.getEventBus().fireEvent(
@@ -187,7 +187,7 @@ public class ColumnViewPort extends Viewport {
 	 */
 	public void selectView(String view) {
 
-		for (final ColumnNavigationItemInterface appplicationNavigationParent : navigationItems) {
+		for (final ColumnNavigationItemInterface appplicationNavigationParent : navigationParents) {
 			
 			final ColumnNavigationParent appplicationNavigation =  (ColumnNavigationParent) appplicationNavigationParent;
 			

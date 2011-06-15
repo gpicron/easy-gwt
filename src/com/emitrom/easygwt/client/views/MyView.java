@@ -1,10 +1,10 @@
 package com.emitrom.easygwt.client.views;
 
 import com.emitrom.easygwt.client.resources.I18N.SampleConstants;
-import com.emitrom.easygwt.wf.client.column.core.AccordionView;
+import com.emitrom.easygwt.wf.client.column.core.ColumnView;
 import com.google.inject.Inject;
 
-public class MyView extends AccordionView {
+public class MyView extends ColumnView {
 
 	private static final long serialVersionUID = 1L;
 	private SampleConstants constants;
