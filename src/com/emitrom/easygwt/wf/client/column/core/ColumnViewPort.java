@@ -50,11 +50,28 @@ import com.google.gwt.user.client.ui.RootPanel;
 public class ColumnViewPort extends Viewport {
 
 	private static ColumnViewPort columnViewPort;
-	private ColumnNavigationPanel westPanel;
-	private ColumnCenterPanel centerPanel;
+
 	private ColumnNorthPanel northPanel;
+	private static int northSize = 100;
+	private ColumnEastPanel eastPanel;
+	private static int eastSize = 200;
+	private ColumnNavigationPanel westPanel;
+	private static int westSize = 200;
+	private ColumnCenterPanel centerPanel;
 	private ColumnSouthPanel southPanel;
+	private static int southSize = 30;
 	private List<ColumnNavigationParent> navigationParents;
+
+	public static ColumnViewPort getInstance(int nSize, int eSize, int sSize,
+												int wSize) {
+		northSize = nSize;
+		eastSize = eSize;
+		southSize = sSize;
+		westSize = wSize;
+		
+		return getInstance();
+		
+	}
 	
 	public static ColumnViewPort getInstance() {
 		
@@ -69,9 +86,10 @@ public class ColumnViewPort extends Viewport {
 	private ColumnViewPort() {
 		super();
 		northPanel = new ColumnNorthPanel();
+		eastPanel = new ColumnEastPanel();
+		southPanel = new ColumnSouthPanel();
 		westPanel = new ColumnNavigationPanel();
 		centerPanel = new ColumnCenterPanel();
-		southPanel = new ColumnSouthPanel();
 
 		RootPanel.get().add(this);
 		Util.getCss().columnViewCss().ensureInjected();
@@ -85,14 +103,22 @@ public class ColumnViewPort extends Viewport {
 		BorderLayout borderLayout = new BorderLayout();  
 	    setLayout(borderLayout); 
 		
-	    BorderLayoutData northPanelData = new BorderLayoutData(LayoutRegion.NORTH, 100);  
+	    BorderLayoutData northPanelData = new BorderLayoutData(LayoutRegion.NORTH, northSize);
 	    northPanelData.setCollapsible(true);  
 	    northPanelData.setFloatable(true);  
 	    northPanelData.setHideCollapseTool(true);
 	    northPanelData.setMargins(new Margins(0, 0, 0, 0)); 
 	    northPanelData.setCollapsible(true);
-	  
-	    BorderLayoutData westPanelData = new BorderLayoutData(LayoutRegion.WEST, 200);  
+
+	    BorderLayoutData eastPanelData = new BorderLayoutData(LayoutRegion.EAST, eastSize);  
+	    eastPanelData.setSplit(true);  
+	    eastPanelData.setCollapsible(true);  
+	    eastPanelData.setMargins(new Margins(0, 0, 5, 0));  
+
+	    BorderLayoutData southPanelData = new BorderLayoutData(LayoutRegion.SOUTH, southSize);  
+	    southPanelData.setMargins(new Margins(0, 0, 0, 0));
+
+	    BorderLayoutData westPanelData = new BorderLayoutData(LayoutRegion.WEST, westSize);  
 	    westPanelData.setSplit(true);  
 	    westPanelData.setCollapsible(true);  
 	    westPanelData.setMargins(new Margins(0, 0, 5, 0));  
@@ -100,13 +126,11 @@ public class ColumnViewPort extends Viewport {
 	    BorderLayoutData centerPanelData = new BorderLayoutData(LayoutRegion.CENTER);  
 	    centerPanelData.setMargins(new Margins(5, 5, 5, 5));  
 	  
-	    BorderLayoutData southPanelData = new BorderLayoutData(LayoutRegion.SOUTH, 30);  
-	    southPanelData.setMargins(new Margins(0, 0, 0, 0));
-	    
-	    add(northPanel, northPanelData);  
+	    add(northPanel, northPanelData);
+	    add(eastPanel, eastPanelData);
+	    add(southPanel, southPanelData);
 	    add(westPanel, westPanelData);  
 	    add(centerPanel, centerPanelData);  
-	    add(southPanel, southPanelData);
 	    
 	}
 
@@ -129,6 +153,13 @@ public class ColumnViewPort extends Viewport {
 	 */
 	public ColumnNorthPanel getNorthPanel() {
 		return northPanel;
+	}
+
+	/**
+	 * @return the eastPanel
+	 */
+	public ColumnEastPanel getEastPanel() {
+		return eastPanel;
 	}
 
 	/**
