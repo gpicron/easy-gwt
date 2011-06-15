@@ -1,7 +1,7 @@
 package com.emitrom.easygwt.client.views;
 
 import com.emitrom.easygwt.client.resources.I18N.SampleConstants;
-import com.emitrom.easygwt.wf.client.views.accordion.AccordionView;
+import com.emitrom.easygwt.wf.client.column.core.AccordionView;
 import com.google.inject.Inject;
 
 public class MyView extends AccordionView {

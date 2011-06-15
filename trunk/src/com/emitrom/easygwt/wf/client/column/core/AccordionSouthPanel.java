@@ -16,20 +16,23 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/
  ******************************************************************************/
-package com.emitrom.easygwt.wf.client.column.views;
+package com.emitrom.easygwt.wf.client.column.core;
 
-import java.io.Serializable;
+import com.extjs.gxt.ui.client.widget.ContentPanel;
 
 /**
- * Accordion View Interface.
+ * South Panel for EasyGWT.
  * 
  * @author Alfredo Quiroga-Villamil
  *
  */
-public interface AccordionViewInterface extends Serializable {
+public class AccordionSouthPanel extends ContentPanel implements AccordionPanelInterface {
 
-	public void prepareToShowView();
-	public void prepareToHideView();
-	public void onRender();
-
+	public AccordionSouthPanel() {
+		super();
+		setHeaderVisible(false);
+		setBodyBorder(false);
+		setFrame(true);
+	}
+	
 }

@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/
  ******************************************************************************/
-package com.emitrom.easygwt.wf.client.column.views;
+package com.emitrom.easygwt.wf.client.column.core;
 
 import com.extjs.gxt.ui.client.widget.LayoutContainer;
 

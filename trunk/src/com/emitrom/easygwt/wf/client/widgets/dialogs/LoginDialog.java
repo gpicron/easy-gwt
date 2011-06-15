@@ -19,7 +19,7 @@
 package com.emitrom.easygwt.wf.client.widgets.dialogs;
 
 import com.emitrom.easygwt.wf.client.authentication.Authenticator;
-import com.emitrom.easygwt.wf.client.views.accordion.util.Util;
+import com.emitrom.easygwt.wf.utils.Util;
 import com.extjs.gxt.ui.client.Style.HorizontalAlignment;
 import com.extjs.gxt.ui.client.event.ButtonEvent;
 import com.extjs.gxt.ui.client.event.ComponentEvent;

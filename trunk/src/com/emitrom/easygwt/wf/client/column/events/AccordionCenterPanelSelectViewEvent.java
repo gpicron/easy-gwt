@@ -18,7 +18,7 @@
  ******************************************************************************/
 package com.emitrom.easygwt.wf.client.column.events;
 
-import com.emitrom.easygwt.wf.client.column.views.AccordionViewInterface;
+import com.emitrom.easygwt.wf.client.column.core.AccordionViewInterface;
 import com.emitrom.easygwt.wf.client.events.EventsHandler;
 import com.emitrom.easygwt.wf.client.events.EventsType;
 import com.google.gwt.event.shared.EventHandler;

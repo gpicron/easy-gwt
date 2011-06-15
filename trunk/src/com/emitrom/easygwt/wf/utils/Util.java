@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/
  ******************************************************************************/
-package com.emitrom.easygwt.wf.client.column.util;
+package com.emitrom.easygwt.wf.utils;
 
 import com.emitrom.easygwt.wf.client.resources.CSS;
 import com.emitrom.easygwt.wf.client.resources.Icons;
