@@ -18,7 +18,7 @@
  ******************************************************************************/
 package com.emitrom.easygwt.wf.client.column.core;
 
-import com.emitrom.easygwt.wf.client.column.events.AccordionCenterPanelSelectViewEvent;
+import com.emitrom.easygwt.wf.client.column.events.ColumnCenterPanelSelectViewEvent;
 import com.emitrom.easygwt.wf.client.events.EventsBus;
 import com.extjs.gxt.ui.client.event.ComponentEvent;
 import com.extjs.gxt.ui.client.event.Events;
@@ -33,19 +33,19 @@ import com.extjs.gxt.ui.client.widget.ListView;
  * 
  * Takes Navigation children that will be added as part of a ListView implementation.
  * 
- * See {@link AccordionNavigationChild}
+ * See {@link ColumnNavigationChild}
  * 
  * @author Alfredo Quiroga-Villamil
  *
  */
-public class AccordionNavigationParent extends ContentPanel 
-											implements AccordionNavigationItemInterface {
+public class ColumnNavigationParent extends ContentPanel 
+											implements ColumnNavigationItemInterface {
 
-	private ListView<AccordionNavigationChild> navigationItemListView = new ListView<AccordionNavigationChild>();
-	private ListStore<AccordionNavigationChild> navigationItemStore = new ListStore<AccordionNavigationChild>();
-	private AccordionNavigationChild navigationDefaultSelectedItem;
+	private ListView<ColumnNavigationChild> navigationItemListView = new ListView<ColumnNavigationChild>();
+	private ListStore<ColumnNavigationChild> navigationItemStore = new ListStore<ColumnNavigationChild>();
+	private ColumnNavigationChild navigationDefaultSelectedItem;
 	
-	public AccordionNavigationParent() {
+	public ColumnNavigationParent() {
 		
 		super();
 		setFrame(true);
@@ -61,7 +61,7 @@ public class AccordionNavigationParent extends ContentPanel
 	 * 
 	 * @param navigationChild
 	 */
-	public void addNavigationChild(AccordionNavigationChild navigationChild) {
+	public void addNavigationChild(ColumnNavigationChild navigationChild) {
 		
 		/**
 		 * We use the class name from the ApplicationView
@@ -80,7 +80,7 @@ public class AccordionNavigationParent extends ContentPanel
 
 	}
 
-	public ListView<AccordionNavigationChild> getApplicationNavigationItemListView() {
+	public ListView<ColumnNavigationChild> getApplicationNavigationItemListView() {
 		return navigationItemListView;
 	}
 
@@ -104,10 +104,10 @@ public class AccordionNavigationParent extends ContentPanel
 				/**
 				 * Fire CenterPanelSelectViewEvent
 				 */
-				AccordionNavigationChild applicationNavigationClickedItem = (AccordionNavigationChild) event.getModel();
+				ColumnNavigationChild applicationNavigationClickedItem = (ColumnNavigationChild) event.getModel();
 
 				EventsBus.getEventBus().fireEvent(
-					new AccordionCenterPanelSelectViewEvent(((AccordionView) applicationNavigationClickedItem.getNavigationView()))
+					new ColumnCenterPanelSelectViewEvent(((ColumnView) applicationNavigationClickedItem.getNavigationView()))
 				);
 				
 			}
@@ -128,11 +128,11 @@ public class AccordionNavigationParent extends ContentPanel
 				 */
 				if (navigationItemListView.getSelectionModel().getSelectedItem() != null) {
 					
-					AccordionNavigationChild applicationNavigationSelectedItem = 
-						(AccordionNavigationChild) navigationItemListView.getSelectionModel().getSelectedItem();
+					ColumnNavigationChild applicationNavigationSelectedItem = 
+						(ColumnNavigationChild) navigationItemListView.getSelectionModel().getSelectedItem();
 					
 					EventsBus.getEventBus().fireEvent(
-						new AccordionCenterPanelSelectViewEvent(applicationNavigationSelectedItem.getNavigationView())
+						new ColumnCenterPanelSelectViewEvent(applicationNavigationSelectedItem.getNavigationView())
 					);
 				
 				/**
@@ -143,11 +143,11 @@ public class AccordionNavigationParent extends ContentPanel
 					
 					navigationItemListView.getSelectionModel().select(0, false);
 					
-					AccordionNavigationChild applicationNavigationFirstItem = 						
-						(AccordionNavigationChild) navigationItemListView.getStore().getAt(0);
+					ColumnNavigationChild applicationNavigationFirstItem = 						
+						(ColumnNavigationChild) navigationItemListView.getStore().getAt(0);
 					
 					EventsBus.getEventBus().fireEvent(
-						new AccordionCenterPanelSelectViewEvent(applicationNavigationFirstItem.getNavigationView())
+						new ColumnCenterPanelSelectViewEvent(applicationNavigationFirstItem.getNavigationView())
 					);
 
 				}

@@ -28,31 +28,31 @@ import com.google.gwt.user.client.ui.AbstractImagePrototype;
  * Create instances of this class to be added to a Navigation Parent
  * in the Navigation Panel.
  * 
- * See {@link AccordionNavigationParent}
+ * See {@link ColumnNavigationParent}
  * 
  * @author Alfredo Quiroga-Villamil
  *
  */
-public class AccordionNavigationChild extends BaseModelData 
-										implements AccordionNavigationItemInterface { 
+public class ColumnNavigationChild extends BaseModelData 
+										implements ColumnNavigationItemInterface { 
 	
 	private static final long serialVersionUID = 3397212364839524276L;
-	private AccordionViewInterface navigationView;
+	private ColumnViewInterface navigationView;
 	private ImageResource icon;
 	private String heading;
 
-	public AccordionNavigationChild(AccordionViewInterface navigationView,
+	public ColumnNavigationChild(ColumnViewInterface navigationView,
 		String heading) {
 		
 		super();
 		set("name", heading);
-		((AccordionView) navigationView).setHeading(heading);
+		((ColumnView) navigationView).setHeading(heading);
 		this.navigationView = navigationView;
 		this.heading = heading;
 		
 	}
 
-	public AccordionViewInterface getNavigationView() {
+	public ColumnViewInterface getNavigationView() {
 		return navigationView;
 	}
 	
@@ -68,7 +68,7 @@ public class AccordionNavigationChild extends BaseModelData
 	 */
 	public void setIcon(ImageResource icon) {
 		set("name", AbstractImagePrototype.create(icon).getHTML() + heading);
-		((AccordionView) navigationView).setHeading(AbstractImagePrototype.create(icon).getHTML() + heading);
+		((ColumnView) navigationView).setHeading(AbstractImagePrototype.create(icon).getHTML() + heading);
 		this.icon = icon;
 	}
 

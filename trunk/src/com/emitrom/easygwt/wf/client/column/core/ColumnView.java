@@ -18,21 +18,31 @@
  ******************************************************************************/
 package com.emitrom.easygwt.wf.client.column.core;
 
-import com.extjs.gxt.ui.client.widget.ContentPanel;
+import com.extjs.gxt.ui.client.widget.LayoutContainer;
 
 /**
- * South Panel for EasyGWT.
+ * Abstract implementation of the ColumnViewInterface.
  * 
  * @author Alfredo Quiroga-Villamil
  *
  */
-public class AccordionSouthPanel extends ContentPanel implements AccordionPanelInterface {
+public abstract class ColumnView extends LayoutContainer implements ColumnViewInterface {
 
-	public AccordionSouthPanel() {
-		super();
-		setHeaderVisible(false);
-		setBodyBorder(false);
-		setFrame(true);
+	private static final long serialVersionUID = 2464515645533609874L;
+	private String heading;
+	
+	@Override
+	public void prepareToHideView() {}
+
+	@Override
+	public void prepareToShowView() {}
+	
+	public String getHeading() {
+		return heading;
+	}
+	
+	public void setHeading(String heading) {
+		this.heading = heading;
 	}
 	
 }

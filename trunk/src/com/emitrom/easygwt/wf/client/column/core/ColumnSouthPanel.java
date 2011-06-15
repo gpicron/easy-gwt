@@ -18,12 +18,21 @@
  ******************************************************************************/
 package com.emitrom.easygwt.wf.client.column.core;
 
+import com.extjs.gxt.ui.client.widget.ContentPanel;
+
 /**
- * Used as a Tag for all Navigation Items
+ * South Panel for EasyGWT.
  * 
  * @author Alfredo Quiroga-Villamil
  *
  */
-public interface AccordionNavigationItemInterface {
+public class ColumnSouthPanel extends ContentPanel implements ColumnPanelInterface {
 
+	public ColumnSouthPanel() {
+		super();
+		setHeaderVisible(false);
+		setBodyBorder(false);
+		setFrame(true);
+	}
+	
 }
