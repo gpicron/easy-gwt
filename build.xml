@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<project name="easy-gwt" basedir=".">
+<project name="easygwt" basedir=".">
 
 	<property file="ant.properties"/>
+	
+	<tstamp>
+		<format property="timestamp" pattern="yyyyMMddHHmm" locale="en"/>
+	</tstamp>
 	
 	<path id="project.class.path">
 		<fileset dir="lib" includes="**/*.jar"/>
@@ -52,7 +56,7 @@
 	</target>
 	
 	<target name="build-easy-gwt" depends="compile-easy-gwt" description="Creates the easy-gwt Jar">
-		<jar destfile="build/${ant.project.name}.${easygwt-version}.jar">
+		<jar destfile="build/${ant.project.name}-${easygwt-version}-${timestamp}.jar">
 			<fileset dir="build/classes"/>
 		</jar>
 		<delete dir="build/classes" failonerror="false" />
