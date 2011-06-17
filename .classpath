@@ -10,5 +10,6 @@
 	<classpathentry kind="lib" path="lib/guice/guice-2.0/guice-2.0.jar"/>
 	<classpathentry kind="lib" path="lib/guice/guice-2.0/guice-servlet-2.0.jar"/>
 	<classpathentry kind="lib" path="lib/gwtp/gwtp-0.4/gwtp-0.4.jar"/>
+	<classpathentry kind="lib" path="lib/gwt4air/2.1.0/gwt4air-2.1.jar"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>
