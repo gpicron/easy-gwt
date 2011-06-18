@@ -22,3 +22,9 @@ to your X.gwt.xml.
 	ColumnViewPort columnView = ColumnViewPort.getInstance();
    }
 }}}
+
+= Create Navigation items =
+
+= Create your first view =
+
+= Using GIN for dependency injection =
