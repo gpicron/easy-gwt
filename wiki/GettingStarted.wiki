@@ -1,13 +1,24 @@
 #summary Getting Started Quickly.
 
-= Introduction =
+= Setup your development environment =
 
-Add your content here.
+  * Download and install Eclipse.
+  * Install the Eclipse GWT Plugin.
+  * Create a new GWT Project.
+  * Download and Configure GXT.
+  * Download the latest stable EasyGWT Jar and add it to your project's class path.
+  * Add : 
 
+{{{
+   <inherits name='com.emitrom.easygwt.wf.EasyGWT'/>
+}}}
 
-= Details =
+to your X.gwt.xml.
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+  * In your GWT project's entry point class, add:
+
+{{{
+   public void onModuleLoad() {
+	ColumnViewPort columnView = ColumnViewPort.getInstance();
+   }
+}}}
