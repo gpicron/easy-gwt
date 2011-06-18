@@ -1,6 +1,5 @@
 #summary RoadMap.
 
 == 1.2.0 ==
-
   === Wizard Implementation ===
   === Error Dialog ===
