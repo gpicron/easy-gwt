@@ -33,6 +33,33 @@ to your X.gwt.xml.
 List<ColumnNavigationParent> navigationParentsList = new ArrayList<ColumnNavigationParent>();
 }}}
 
+   As you would imaginate the List of navigation parents take a parent object as it's argument. See below:
+
+{{{
+		ColumnNavigationParent parent1 = new ColumnNavigationParent();
+		parent1.setHeading(constants.parentOne());
+		parent1.setIcon(AbstractImagePrototype.create(icons.chartBar()));
+}}}
+
+   In this case, we've created a Column Navigation Parent instance and set the heading as well as the icon that will be used when the application loads up.
+
+   The next step is to simply add a child instance to the recently created parent. See below:
+
+{{{
+		ColumnNavigationChild parent1Child1 = new ColumnNavigationChild(injector.getMyView(), 
+				constants.parentOneChildOne());
+		parent1Child1.setIcon(icons.house());
+		parent1.addNavigationChild(parent1Child1);
+}}}
+
+   You have the ability as in the parent case to set a heading as well as an icon for all children.
+
+Lastly you simply add the list of navigation parents to the column instance obtained initially:
+
+{{{
+		columnView.addNavigationItems(navigationParentsList);
+}}}
+
 === Create your first view ===
 
 === Using GIN for dependency injection ===
