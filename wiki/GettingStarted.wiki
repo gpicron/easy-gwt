@@ -54,7 +54,7 @@ to your X.gwt.xml.
 
    You have the ability as in the parent case to set a heading as well as an icon for all children.
 
-Lastly you simply add the list of navigation parents to the column instance obtained initially:
+   Lastly you simply add the list of navigation parents to the column instance obtained initially:
 
 {{{
    columnView.addNavigationItems(navigationParentsList);
