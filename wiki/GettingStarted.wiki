@@ -62,7 +62,7 @@ to your X.gwt.xml.
 
 === Create your first view ===
 
-   A view should extend the abstract class ColumnView provided by the framework. See below:
+   A view should extend the abstract class ColumnView provided by the framework. See below
 
 {{{
    public class MyView extends ColumnView {
