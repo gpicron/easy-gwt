@@ -60,7 +60,7 @@ to your X.gwt.xml.
 
 === Create your first view ===
 
-   A view should extend the abstract class Column View provided by the framework. See below:
+   A view should extend the abstract class Column View provided by the framework. A view will be displayed by the framework in the Center Panel and follows a Card Layout implementation. Views are invoked when an item in the Navigation Panel is clicked on. See below:
 
 {{{
    public class MyView extends ColumnView {
