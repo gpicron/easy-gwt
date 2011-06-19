@@ -77,6 +77,8 @@ to your X.gwt.xml.
    }
 }}}
 
+   View elements should be added to the onRender method. This method is only called once by the framework and it's typically good enough for most implementations. Should you need access to the About to Show and About to Hide Events for the view, you can override prepareToHideView as well as prepareToShowView respectively.
+
 === Using GIN for dependency injection ===
 
    The framework does not require the usage of dependency injection, however it is strongly encouraged. The examples provided above used an injector to inject the View into the Navigation Child. See below:
