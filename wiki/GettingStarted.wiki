@@ -91,7 +91,7 @@ to your X.gwt.xml.
    The same could have been accomplished by doing:
 
 {{{
-   ColumnNavigationChild parent1Child1 = new ColumnNavigationChild( new MyView(), 
+   ColumnNavigationChild parent1Child1 = new ColumnNavigationChild(new MyView(), 
       constants.parentOneChildOne());
 }}}
 
