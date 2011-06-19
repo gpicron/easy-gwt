@@ -79,6 +79,30 @@ to your X.gwt.xml.
    }
 }}}
 
-
-
 === Using GIN for dependency injection ===
+
+   The framework does not require the usage of dependency injection, however it is strongly encouraged. The examples provided above used an injector to inject the View into the Navigation Child. See below:
+
+
+{{{
+   ColumnNavigationChild parent1Child1 = new ColumnNavigationChild(injector.getMyView(), 
+      constants.parentOneChildOne());
+}}}
+
+   Dependency injection can easily be achieved via GIN. For cases where the View requires Custom Widgets, Constants as well as Images and other elements this can be achieved as follows:
+
+{{{
+public class MyView extends ColumnView {
+
+	private static final long serialVersionUID = 1L;
+	private SampleConstants constants;
+
+	@Inject
+	public MyView(SampleConstants constants) {
+		this.constants = constants;
+	}
+
+   }
+}}}
+
+   For more details on how to use GIN, reference the GIN Page at [http://code.google.com/p/google-gin/ GIN]
