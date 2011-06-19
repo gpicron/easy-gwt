@@ -83,9 +83,15 @@ to your X.gwt.xml.
 
    The framework does not require the usage of dependency injection, however it is strongly encouraged. The examples provided above used an injector to inject the View into the Navigation Child. See below:
 
-
 {{{
    ColumnNavigationChild parent1Child1 = new ColumnNavigationChild(injector.getMyView(), 
+      constants.parentOneChildOne());
+}}}
+
+   The same could have been accomplished by doing:
+
+{{{
+   ColumnNavigationChild parent1Child1 = new ColumnNavigationChild( new MyView(), 
       constants.parentOneChildOne());
 }}}
 
