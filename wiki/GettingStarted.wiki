@@ -81,7 +81,7 @@ to your X.gwt.xml.
 
 === Using GIN for dependency injection ===
 
-   The framework does not require the usage of dependency injection, however it is strongly encouraged as well as an MVP implementation for the entire application. The examples provided above used an injector to inject the View into the Navigation Child. See below:
+   The framework does not require the usage of dependency injection, however it is strongly encouraged as well as an MVP implementation for the entire application. The examples provided above used an injector to inject the View. See below:
 
 {{{
    ColumnNavigationChild parent1Child1 = new ColumnNavigationChild(injector.getMyView(), 
