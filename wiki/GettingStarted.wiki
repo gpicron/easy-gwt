@@ -25,7 +25,7 @@ to your X.gwt.xml.
 
   * Run your project.
 
-=== Create Navigation items ===
+=== Add Navigation items ===
 
    The Navigation Panel is composed of Parent Items. Each Parent represents an element in an Accordion Layout. Parents are composed consequently of children which will be represented under the parent by an icon and text.
 
