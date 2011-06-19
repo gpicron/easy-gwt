@@ -67,6 +67,15 @@ to your X.gwt.xml.
 {{{
    public class MyView extends ColumnView {
 
+	@Override
+	public void onRender() {}
+
+	@Override
+	public void prepareToHideView() {}
+
+	@Override
+	public void prepareToShowView() {}
+
    }
 }}}
 
