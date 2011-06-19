@@ -111,4 +111,4 @@ public class MyView extends ColumnView {
    }
 }}}
 
-   For more details on how to use GIN, reference the GIN Page at [http://code.google.com/p/google-gin/ GIN]
+   For more details on how to use GIN, reference [http://code.google.com/p/google-gin/ GIN]
