@@ -33,8 +33,6 @@ to your X.gwt.xml.
    List<ColumnNavigationParent> navigationParentsList = new ArrayList<ColumnNavigationParent>();
 }}}
 
-   As you would imaginate the List of navigation parents take a parent object as it's argument. See below:
-
 {{{
    ColumnNavigationParent parent1 = new ColumnNavigationParent();
    parent1.setHeading(constants.parentOne());
