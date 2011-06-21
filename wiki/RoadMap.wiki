@@ -4,4 +4,3 @@
 
   # Wizard Implementation
   # Error Dialog
-  # Add Navigation functionality to the North Panel.
