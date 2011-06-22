@@ -66,7 +66,16 @@ to your X.gwt.xml.
    public class MyView extends ColumnView {
 
 	@Override
-	public void onRender() {}
+	public void onRender() {
+
+		Window window = new Window();
+		window.setSize(300, 300);
+		window.setHeading("My Window");
+		
+		add(window);
+		window.show();
+
+        }
 
 	@Override
 	public void prepareToHideView() {}
