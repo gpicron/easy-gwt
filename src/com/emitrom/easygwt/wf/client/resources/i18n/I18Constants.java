@@ -84,4 +84,15 @@ public interface I18Constants extends Constants {
 	@DefaultStringValue("Access")
 	String styleAccessHeader();
 	
+	@DefaultStringValue("Previous")
+	String previousButtonHeading();
+	
+	@DefaultStringValue("Next")
+	String nextButtonHeading();
+	
+	@DefaultStringValue("Finish")
+	String finishButtonHeading();
+	
+	@DefaultStringValue("Cancel")
+	String cancelButtonHeading();
 }
