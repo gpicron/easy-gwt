@@ -272,6 +272,8 @@ public abstract class WizardDialog extends Dialog {
         pagesLayout = new CardLayout();
         pagesStack = new LayoutContainer();
         pagesStack.setLayout(pagesLayout);        
+        
+        add(pagesStack, new BorderLayoutData(LayoutRegion.CENTER));
     }
     
     /**
