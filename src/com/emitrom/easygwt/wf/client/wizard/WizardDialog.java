@@ -25,29 +25,18 @@ import java.util.List;
 import com.emitrom.easygwt.wf.client.resources.i18n.I18Constants;
 import com.emitrom.easygwt.wf.client.utils.Util;
 import com.extjs.gxt.ui.client.Style.LayoutRegion;
-import com.extjs.gxt.ui.client.data.BeanModel;
+import com.extjs.gxt.ui.client.data.BaseModelData;
 import com.extjs.gxt.ui.client.event.ButtonEvent;
 import com.extjs.gxt.ui.client.event.SelectionListener;
 import com.extjs.gxt.ui.client.store.ListStore;
-import com.extjs.gxt.ui.client.util.Margins;
-import com.extjs.gxt.ui.client.util.Padding;
 import com.extjs.gxt.ui.client.widget.ContentPanel;
 import com.extjs.gxt.ui.client.widget.Dialog;
-import com.extjs.gxt.ui.client.widget.Label;
 import com.extjs.gxt.ui.client.widget.LayoutContainer;
+import com.extjs.gxt.ui.client.widget.ListView;
 import com.extjs.gxt.ui.client.widget.button.Button;
-import com.extjs.gxt.ui.client.widget.grid.ColumnConfig;
-import com.extjs.gxt.ui.client.widget.grid.ColumnModel;
-import com.extjs.gxt.ui.client.widget.grid.Grid;
 import com.extjs.gxt.ui.client.widget.layout.BorderLayout;
 import com.extjs.gxt.ui.client.widget.layout.BorderLayoutData;
-import com.extjs.gxt.ui.client.widget.layout.BoxLayout.BoxLayoutPack;
 import com.extjs.gxt.ui.client.widget.layout.CardLayout;
-import com.extjs.gxt.ui.client.widget.layout.HBoxLayout;
-import com.extjs.gxt.ui.client.widget.layout.HBoxLayout.HBoxLayoutAlign;
-import com.extjs.gxt.ui.client.widget.layout.HBoxLayoutData;
-import com.extjs.gxt.ui.client.widget.layout.VBoxLayout;
-import com.extjs.gxt.ui.client.widget.layout.VBoxLayout.VBoxLayoutAlign;
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 
@@ -59,10 +48,13 @@ import com.google.gwt.core.client.Scheduler.ScheduledCommand;
  * 
  */
 public abstract class WizardDialog extends Dialog {
+	
     protected I18Constants constants = Util.getConstants();
     protected WizardModel model;
     protected List<WizardPage> pages;
     protected int currentPageIndex;
+    
+    // Wizard heading
     
     // main page content
     private LayoutContainer pagesStack;
@@ -70,15 +62,15 @@ public abstract class WizardDialog extends Dialog {
     
     // header panel
     private ContentPanel headerPanel;
-    private Label pageDescription = new Label();
     
     // steps    
     private ContentPanel stepsPanel;
-    private ListStore<BeanModel> stepsStore;
-    private Grid<BeanModel> stepsGrid;
+    private ListView<BaseModelData> listView;
+    private ListStore<BaseModelData> stepsStore;
+//    private ListStore<BeanModel> stepsStore;
+//    private Grid<BeanModel> stepsGrid;
     
     // navigation buttons
-    private ContentPanel buttonsPanel;
     private Button previousButton;
     private Button nextButton;
     private Button finishButton;
@@ -99,15 +91,21 @@ public abstract class WizardDialog extends Dialog {
      * @param model the wizard model
      */
     public WizardDialog(WizardModel model) {
+
+        setLayout(new BorderLayout());
+    	setButtons("");
+    	setSize(600, 465);
+    	setResizable(false);
+    	
         this.model = model;
         pages = new ArrayList<WizardPage>();
                 
-        initHeader();
         initSteps();
-        initNavigation();
+        addButtons();
         initPagesStack();
+        
+        addListeners();
                 
-        setLayout(new BorderLayout());
     }
     
     /**
@@ -120,15 +118,6 @@ public abstract class WizardDialog extends Dialog {
     }
     
     /**
-     * Gets the buttons panel.
-     * 
-     * @return ContentPanel the buttons panel
-     */
-    public ContentPanel getButtonsPanel() {
-        return buttonsPanel;
-    }
-    
-    /**
      * Gets the steps panel.
      * 
      * @return ContentPanel the steps panel
@@ -138,142 +127,65 @@ public abstract class WizardDialog extends Dialog {
     }
     
     /**
-     * Initializes the header
-     */
-    private void initHeader() {
-        headerPanel = new ContentPanel();
-        headerPanel.setHeaderVisible(false);
-        headerPanel.setBodyBorder(false);
-        
-        HBoxLayout hBoxLayout = new HBoxLayout();
-        hBoxLayout.setPadding(new Padding(5));
-        hBoxLayout.setHBoxLayoutAlign(HBoxLayoutAlign.MIDDLE);
-        hBoxLayout.setPack(BoxLayoutPack.START);
-        
-        HBoxLayoutData layoutData = new HBoxLayoutData(new Margins(0, 0, 0, 5));
-        headerPanel.add(pageDescription, layoutData);
-        
-        add(headerPanel, new BorderLayoutData(LayoutRegion.NORTH));
-    }
-    
-    /**
      * Initializes the steps panel.  This can only be done after all the pages
      * have been added to the wizard, so this method is called when the wizard
      * is shown.
      */
     private void initSteps() {
+    	
         // we do a content panel here so the user can set a background image
         stepsPanel = new ContentPanel();
         stepsPanel.setHeaderVisible(false);
-        stepsPanel.setBodyBorder(false);
         
-        ColumnConfig stepsConfig = new ColumnConfig();
-        stepsConfig.setFixed(true);
-        stepsConfig.setId("step");
-        stepsConfig.setHeader(null);
+        listView = new ListView<BaseModelData>();
+        listView.setBorders(false);
+        listView.setStyleName("wf-navigation-item");
+        listView.setDisplayProperty("step");
+        listView.setStyleAttribute("padding-top", "20px");
+        listView.setStyleAttribute("background-image", "url('resources/easygwt/images/wizard_left_banner.png')");
         
-        List<ColumnConfig> columns = new ArrayList<ColumnConfig>();
-        columns.add(stepsConfig);
+        stepsStore = new ListStore<BaseModelData>();
         
-        ColumnModel cm = new ColumnModel(columns);
+        BaseModelData data = new BaseModelData();
+        data.set("step", "Vista 1");
+        stepsStore.add(data);
         
-        stepsStore = new ListStore<BeanModel>();
-        stepsGrid = new Grid<BeanModel>(stepsStore, cm);
+        listView.setStore(stepsStore);
         
-        VBoxLayout vBoxLayout = new VBoxLayout();
-        vBoxLayout.setPadding(new Padding(5));
-        vBoxLayout.setPack(BoxLayoutPack.START);
-        vBoxLayout.setVBoxLayoutAlign(VBoxLayoutAlign.CENTER);
+        stepsPanel.add(listView);
         
-        stepsPanel.setLayout(vBoxLayout);        
-        stepsPanel.add(stepsGrid);
+        add(stepsPanel, new BorderLayoutData(LayoutRegion.WEST, 165));
+        
     }
     
     /**
      * Initializes the navigations buttons.
      */
-    private void initNavigation() {
-        buttonsPanel = new ContentPanel();
-        buttonsPanel.setHeaderVisible(false);
-        buttonsPanel.setBodyBorder(false);
-        
-        HBoxLayout hBoxLayout = new HBoxLayout();
-        hBoxLayout.setPadding(new Padding(5));
-        hBoxLayout.setPack(BoxLayoutPack.END);
-        hBoxLayout.setHBoxLayoutAlign(HBoxLayoutAlign.MIDDLE);
-                  
-        buttonsPanel.setLayout(new HBoxLayout());
-        
+    private void addButtons() {
+    	
         previousButton = new Button(constants.previousButtonHeading());
-        previousButton.addSelectionListener(new SelectionListener<ButtonEvent>() {
-            @Override
-            public void componentSelected(ButtonEvent ce) {
-                Scheduler.get().scheduleDeferred(new ScheduledCommand() {
-                    @Override
-                    public void execute() {
-                        previous();
-                    }
-                });
-            }
-        });
-        
         nextButton = new Button(constants.nextButtonHeading());
-        nextButton.addSelectionListener(new SelectionListener<ButtonEvent>() {
-            @Override
-            public void componentSelected(ButtonEvent ce) {
-                Scheduler.get().scheduleDeferred(new ScheduledCommand() {
-                    @Override
-                    public void execute() {
-                        next();
-                    }
-                });
-            }
-        });
-        
         finishButton = new Button(constants.finishButtonHeading());
-        finishButton.addSelectionListener(new SelectionListener<ButtonEvent>() {
-            @Override
-            public void componentSelected(ButtonEvent ce) {
-                Scheduler.get().scheduleDeferred(new ScheduledCommand() {
-                    @Override
-                    public void execute() {
-                        finish();
-                    }
-                });
-            }
-        });
-        
         cancelButton = new Button(constants.cancelButtonHeading());
-        cancelButton.addSelectionListener(new SelectionListener<ButtonEvent>() {
-            @Override
-            public void componentSelected(ButtonEvent ce) {
-                Scheduler.get().scheduleDeferred(new ScheduledCommand() {
-                    @Override
-                    public void execute() {
-                        cancel();
-                    }
-                });
-            }
-        });
         
-        HBoxLayoutData layoutData = new HBoxLayoutData(new Margins(0, 0, 0, 5));  
-        buttonsPanel.add(previousButton, layoutData);
-        buttonsPanel.add(nextButton, layoutData);  
-        buttonsPanel.add(finishButton, layoutData);
-        buttonsPanel.add(cancelButton, layoutData);
+        addButton(previousButton);
+        addButton(nextButton);
+        addButton(finishButton);
+        addButton(cancelButton);
         
-        add(buttonsPanel, new BorderLayoutData(LayoutRegion.SOUTH));
     }
     
     /**
      * Initializes the card layout where all the wizard pages are kept
      */
     private void initPagesStack() {
+    	
         pagesLayout = new CardLayout();
         pagesStack = new LayoutContainer();
         pagesStack.setLayout(pagesLayout);        
         
         add(pagesStack, new BorderLayoutData(LayoutRegion.CENTER));
+        
     }
     
     /**
@@ -333,13 +245,11 @@ public abstract class WizardDialog extends Dialog {
      * @param index
      */
     private void setActivePage(int index) {
+    	
         WizardPage activePage = pages.get(index);        
         
         // highlight the current step
-        stepsGrid.getSelectionModel().select(index, false);
-        
-        // change the wizard's description
-        pageDescription.setText(activePage.getPageDescription());
+        listView.getSelectionModel().select(index, false);
         
         if (!activePage.isPageRendered()) {
             activePage.renderPage();
@@ -356,6 +266,7 @@ public abstract class WizardDialog extends Dialog {
      * Goes forward one page, as long as the page is allowed to make progress.
      */
     private void next() {
+    	
         WizardPage currentPage = getCurrentPage();
         
         if (currentPage.isValid()) {
@@ -378,8 +289,62 @@ public abstract class WizardDialog extends Dialog {
         this.hide();
     }
     
+    private void addListeners() {
+    	
+        previousButton.addSelectionListener(new SelectionListener<ButtonEvent>() {
+            @Override
+            public void componentSelected(ButtonEvent ce) {
+                Scheduler.get().scheduleDeferred(new ScheduledCommand() {
+                    @Override
+                    public void execute() {
+                        previous();
+                    }
+                });
+            }
+        });
+
+        nextButton.addSelectionListener(new SelectionListener<ButtonEvent>() {
+            @Override
+            public void componentSelected(ButtonEvent ce) {
+                Scheduler.get().scheduleDeferred(new ScheduledCommand() {
+                    @Override
+                    public void execute() {
+                        next();
+                    }
+                });
+            }
+        });
+
+        cancelButton.addSelectionListener(new SelectionListener<ButtonEvent>() {
+            @Override
+            public void componentSelected(ButtonEvent ce) {
+                Scheduler.get().scheduleDeferred(new ScheduledCommand() {
+                    @Override
+                    public void execute() {
+                        cancel();
+                    }
+                });
+            }
+        });
+        
+        finishButton.addSelectionListener(new SelectionListener<ButtonEvent>() {
+            @Override
+            public void componentSelected(ButtonEvent ce) {
+                Scheduler.get().scheduleDeferred(new ScheduledCommand() {
+                    @Override
+                    public void execute() {
+                    	WizardDialog.this.hide();
+                        finish();
+                    }
+                });
+            }
+        });
+        
+    }
+    
     /**
      * Let the implementation of what to do when the wizard is finished to the user.
      */
     public abstract void finish();
+    
 }

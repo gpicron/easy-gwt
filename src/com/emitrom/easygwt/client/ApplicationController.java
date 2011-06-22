@@ -49,7 +49,7 @@ public class ApplicationController implements EntryPoint {
 		parent2.setHeading(constants.parentTwo());
 		parent2.setIcon(AbstractImagePrototype.create(icons.group()));
 		
-		ColumnNavigationChild parent2Child1 = new ColumnNavigationChild(injector.getMyView(), 
+		ColumnNavigationChild parent2Child1 = new ColumnNavigationChild(injector.getMySecondView(), 
 				constants.parentTwoChildOne());
 		parent2Child1.setIcon(icons.user());
 		parent2.addNavigationChild(parent2Child1);
