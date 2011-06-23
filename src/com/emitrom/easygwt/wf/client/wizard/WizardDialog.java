@@ -27,10 +27,8 @@ import com.emitrom.easygwt.wf.client.utils.Util;
 import com.extjs.gxt.ui.client.Style.LayoutRegion;
 import com.extjs.gxt.ui.client.data.BaseModelData;
 import com.extjs.gxt.ui.client.event.ButtonEvent;
-import com.extjs.gxt.ui.client.event.Events;
 import com.extjs.gxt.ui.client.event.SelectionListener;
 import com.extjs.gxt.ui.client.store.ListStore;
-import com.extjs.gxt.ui.client.widget.ContentPanel;
 import com.extjs.gxt.ui.client.widget.Dialog;
 import com.extjs.gxt.ui.client.widget.LayoutContainer;
 import com.extjs.gxt.ui.client.widget.ListView;
@@ -61,11 +59,7 @@ public abstract class WizardDialog extends Dialog {
     private LayoutContainer pagesStack;
     private CardLayout pagesLayout;
     
-    // header panel
-    private ContentPanel headerPanel;
-    
     // steps    
-    private ContentPanel stepsPanel;
     private ListView<BaseModelData> listView;
     private ListStore<BaseModelData> stepsStore;
     
@@ -108,40 +102,16 @@ public abstract class WizardDialog extends Dialog {
     }
     
     /**
-     * Gets the header panel.
-     * 
-     * @return ContentPanel the wizard header panel
-     */
-    public ContentPanel getHeaderPanel() {
-        return headerPanel;
-    }
-    
-    /**
-     * Gets the steps panel.
-     * 
-     * @return ContentPanel the steps panel
-     */
-    public ContentPanel getStepsPanel() {
-        return stepsPanel;
-    }
-    
-    /**
      * Initializes the steps panel.  This can only be done after all the pages
      * have been added to the wizard, so this method is called when the wizard
      * is shown.
      */
     private void initSteps() {
     	
-        // we do a content panel here so the user can set a background image
-        stepsPanel = new ContentPanel();
-        stepsPanel.setHeaderVisible(false);
-        
         listView = new ListView<BaseModelData>();
-        listView.setBorders(false);
-        listView.setStyleName("wf-navigation-item");
+        listView.setStyleName("wf-navigation-wizard");
         listView.setDisplayProperty("step");
         listView.setStyleAttribute("padding-top", "20px");
-        listView.setStyleAttribute("background-image", "url('resources/easygwt/images/wizard_left_banner.png')");
         
         stepsStore = new ListStore<BaseModelData>();
         
@@ -149,11 +119,13 @@ public abstract class WizardDialog extends Dialog {
         data.set("step", "Vista 1");
         stepsStore.add(data);
         
+        data = new BaseModelData();
+        data.set("step", "Vista 2");
+        stepsStore.add(data);
+        
         listView.setStore(stepsStore);
         
-        stepsPanel.add(listView);
-        
-        add(stepsPanel, new BorderLayoutData(LayoutRegion.WEST, 165));
+        add(listView, new BorderLayoutData(LayoutRegion.WEST, 165));
         
     }
     
@@ -165,6 +137,7 @@ public abstract class WizardDialog extends Dialog {
         previousButton = new Button(constants.previousButtonHeading());
         nextButton = new Button(constants.nextButtonHeading());
         finishButton = new Button(constants.finishButtonHeading());
+        finishButton.setVisible(false);
         cancelButton = new Button(constants.cancelButtonHeading());
         
         addButton(previousButton);
@@ -226,7 +199,7 @@ public abstract class WizardDialog extends Dialog {
         
         previousButton.setEnabled(currentPageIndex > 0);
         nextButton.setEnabled(currentPageIndex < pages.size() - 1 && valid);
-        finishButton.setEnabled(currentPageIndex == pages.size() - 1 && valid);
+        finishButton.setVisible(currentPageIndex == pages.size() - 1 && valid);
     }
     
     /**
