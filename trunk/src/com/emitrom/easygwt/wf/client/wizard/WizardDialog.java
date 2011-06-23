@@ -54,7 +54,6 @@ public abstract class WizardDialog extends Dialog {
 	
     protected I18Constants constants = Util.getConstants();
     protected WizardModel model;
-    protected List<WizardPage> pages;
     protected int currentPageIndex;
     
     // Wizard heading
@@ -94,8 +93,7 @@ public abstract class WizardDialog extends Dialog {
     	setSize(600, 465);
     	setResizable(false);
     	
-        this.model = model;
-        pages = new ArrayList<WizardPage>();
+        this.model = model;        
                 
         initSteps();
         addButtons();
@@ -115,6 +113,7 @@ public abstract class WizardDialog extends Dialog {
         listView = new ListView<BaseModelData>();
         listView.setStyleName("wf-navigation-wizard");
         listView.setDisplayProperty("step");
+        listView.disableEvents(true);
         
         stepsStore = new ListStore<BaseModelData>();
         listView.setStore(stepsStore);
@@ -158,7 +157,7 @@ public abstract class WizardDialog extends Dialog {
      */
     public void show() {        
         if (getPageCount() > 0) {
-            setActivePage(0);            
+            setActivePage(0);         
         }
         
         super.show();
@@ -173,8 +172,7 @@ public abstract class WizardDialog extends Dialog {
     	
         BaseModelData stepData = new BaseModelData();
         stepData.set("step", page.getStepDescription());
-        stepsStore.add(stepData);
-        pages.add(page);
+        stepsStore.add(stepData);        
         pagesStack.add(page);
         
     }
@@ -185,7 +183,7 @@ public abstract class WizardDialog extends Dialog {
      * @return int number of pages in this wizard
      */
     public int getPageCount() {
-        return pages.size();
+        return pagesStack.getItemCount();
     }
     
     /**
@@ -197,8 +195,8 @@ public abstract class WizardDialog extends Dialog {
         boolean valid = getCurrentPage().isValid();
         
         previousButton.setEnabled(currentPageIndex > 0);
-        nextButton.setEnabled(currentPageIndex < pages.size() - 1 && valid);
-        finishButton.setEnabled(currentPageIndex == pages.size() - 1 && valid);
+        nextButton.setEnabled(currentPageIndex < pagesStack.getItemCount() - 1 && valid);
+        finishButton.setEnabled(currentPageIndex == pagesStack.getItemCount() - 1 && valid);
     }
     
     /**
@@ -207,7 +205,7 @@ public abstract class WizardDialog extends Dialog {
      * @return WizardPage
      */
     public WizardPage getCurrentPage() {
-        return pages.get(currentPageIndex);
+        return (WizardPage) pagesStack.getItem(currentPageIndex);
     }
     
     /**
@@ -217,7 +215,7 @@ public abstract class WizardDialog extends Dialog {
      */
     private void setActivePage(int index) {
     	
-        WizardPage activePage = pages.get(index);        
+        WizardPage activePage = (WizardPage) pagesStack.getItem(index);        
         
         // highlight the current step
         listView.getSelectionModel().select(index, false);

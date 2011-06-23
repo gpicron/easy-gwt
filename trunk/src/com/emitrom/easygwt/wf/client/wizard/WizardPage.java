@@ -19,7 +19,6 @@
  ******************************************************************************/
 package com.emitrom.easygwt.wf.client.wizard;
 
-import com.extjs.gxt.ui.client.data.BeanModelTag;
 import com.extjs.gxt.ui.client.widget.LayoutContainer;
 
 /**
@@ -29,7 +28,7 @@ import com.extjs.gxt.ui.client.widget.LayoutContainer;
  * @author <a href=mailto:david@emitrom.com>David La Motta</a>
  *
  */
-public abstract class WizardPage extends LayoutContainer implements BeanModelTag {
+public abstract class WizardPage extends LayoutContainer {
     
     /** 
      * Is this page valid so the wizard can advance.
