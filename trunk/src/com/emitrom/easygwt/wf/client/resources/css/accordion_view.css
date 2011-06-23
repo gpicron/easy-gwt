@@ -41,4 +41,39 @@
 .wf-navigation-x-panel-header-text .x-panel-header img {
 	    vertical-align: middle;
 	    padding-right: 5px;
-}	
+}
+
+/**
+ * Wizard
+ */
+ 
+.wf-navigation-wizard {
+    background: url("resources/easygwt/images/wizard_left_banner.png") !important;
+}
+ 
+.wf-navigation-wizard .x-view-item {
+	padding: 0 0 0 5px;
+	color: white;
+	font-family: "segoe UI,tahoma,arial,helvetica,sans-serif";
+	font-weight: normal;
+	line-height: 19px;
+    background: transparent;
+    cursor: default;
+    border: none;
+}
+
+.wf-navigation-wizard .x-view-highlightrow {
+	border: none;
+}
+	
+.wf-navigation-wizard .x-view-item-sel {
+	font-weight: bold;
+	border: 0 !important;
+}
+
+.wf-navigation-wizard .x-view-item-over {
+	font-weight: bold;
+	background: none;
+	border: 0 !important;
+}
+ 
