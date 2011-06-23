@@ -48,18 +48,19 @@
  */
  
 .wf-navigation-wizard {
-    background: url("resources/easygwt/images/wizard_left_banner.png") !important;
+    background: url("resources/easygwt/images/wizard_left_banner.jpeg") !important;
 }
  
 .wf-navigation-wizard .x-view-item {
-	padding: 0 0 0 5px;
-	color: white;
+	padding: 0 0 0 15px;
+	color: #325589;
 	font-family: "segoe UI,tahoma,arial,helvetica,sans-serif";
 	font-weight: normal;
 	line-height: 19px;
     background: transparent;
     cursor: default;
     border: none;
+    font-weight: bold;
 }
 
 .wf-navigation-wizard .x-view-highlightrow {
@@ -69,11 +70,12 @@
 .wf-navigation-wizard .x-view-item-sel {
 	font-weight: bold;
 	border: 0 !important;
+	background-color: #2968C6;
+	color: white;
 }
 
 .wf-navigation-wizard .x-view-item-over {
 	font-weight: bold;
-	background: none;
 	border: 0 !important;
 }
  
