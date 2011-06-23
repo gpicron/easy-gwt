@@ -67,6 +67,10 @@ public class MyView extends ColumnView {
 			TextField<String> field = new TextField<String>();
 			field.setFieldLabel("FIELD");
 			add(field);
+			
+			// Do not forget to set this value, unless you want your page rendered
+			// every single time it is entered.
+			super.pageRendered = true;
 		}
 
 		@Override
