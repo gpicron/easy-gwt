@@ -35,6 +35,9 @@ public class MyView extends ColumnView {
 		wizard.setHeading("New SnapShot Wizard");
 		
 		wizard.addPage(new WelcomePage());
+		wizard.addPage(new WelcomePage());
+		wizard.addPage(new WelcomePage());
+		wizard.addPage(new WelcomePage());
 		
 		wizard.show();
 		

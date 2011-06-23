@@ -111,18 +111,8 @@ public abstract class WizardDialog extends Dialog {
         listView = new ListView<BaseModelData>();
         listView.setStyleName("wf-navigation-wizard");
         listView.setDisplayProperty("step");
-        listView.setStyleAttribute("padding-top", "20px");
         
         stepsStore = new ListStore<BaseModelData>();
-        
-        BaseModelData data = new BaseModelData();
-        data.set("step", "Vista 1");
-        stepsStore.add(data);
-        
-        data = new BaseModelData();
-        data.set("step", "Vista 2");
-        stepsStore.add(data);
-        
         listView.setStore(stepsStore);
         
         add(listView, new BorderLayoutData(LayoutRegion.WEST, 165));
@@ -177,7 +167,12 @@ public abstract class WizardDialog extends Dialog {
      * @param page the page to add.
      */
     public void addPage(WizardPage page) {
+    	
+        BaseModelData stepData = new BaseModelData();
+        stepData.set("step", page.getStepDescription());
+        stepsStore.add(stepData);
         pages.add(page);
+        
     }
     
     /**
