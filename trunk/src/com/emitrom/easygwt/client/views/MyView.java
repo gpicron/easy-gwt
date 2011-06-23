@@ -5,7 +5,9 @@ import com.emitrom.easygwt.client.resources.I18N.SampleConstants;
 import com.emitrom.easygwt.wf.client.column.core.ColumnView;
 import com.emitrom.easygwt.wf.client.wizard.WizardDialog;
 import com.emitrom.easygwt.wf.client.wizard.WizardPage;
+import com.extjs.gxt.ui.client.widget.ContentPanel;
 import com.extjs.gxt.ui.client.widget.form.TextField;
+import com.extjs.gxt.ui.client.widget.layout.FitLayout;
 import com.google.gwt.user.client.ui.AbstractImagePrototype;
 import com.google.inject.Inject;
 
@@ -62,13 +64,14 @@ public class MyView extends ColumnView {
 
 		@Override
 		public void renderPage() {
+			
+			ContentPanel c = new ContentPanel();
+			c.setLayout(new FitLayout());
 			TextField<String> field = new TextField<String>();
 			field.setFieldLabel("FIELD");
-			add(field);
+			c.add(field);
+			add(c);
 			
-			// Do not forget to set this value, unless you want your page rendered
-			// every single time it is entered.
-			super.pageRendered = true;
 		}
 
 		@Override
