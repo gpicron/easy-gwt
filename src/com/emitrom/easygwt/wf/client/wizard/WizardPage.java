@@ -30,7 +30,6 @@ import com.extjs.gxt.ui.client.widget.LayoutContainer;
  *
  */
 public abstract class WizardPage extends LayoutContainer implements BeanModelTag {
-    protected boolean pageRendered = false;
     
     /** 
      * Is this page valid so the wizard can advance.
@@ -53,16 +52,6 @@ public abstract class WizardPage extends LayoutContainer implements BeanModelTag
      * @return String short text that goes in the steps panel of the wizard. 
      */
     public abstract String getStepDescription();
-    
-    /**
-     * The wizard always renders the pages it contains upon entering to that page, but
-     * it will only do so if the page has not been previously rendered.
-     * 
-     * @return boolean true if this page has been rendered; false otherwise.
-     */
-    public boolean isPageRendered() {
-        return pageRendered;
-    }
     
     /**
      * Renders this page.

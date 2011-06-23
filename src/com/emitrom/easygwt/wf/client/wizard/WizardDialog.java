@@ -127,7 +127,6 @@ public abstract class WizardDialog extends Dialog {
         previousButton = new Button(constants.previousButtonHeading());
         nextButton = new Button(constants.nextButtonHeading());
         finishButton = new Button(constants.finishButtonHeading());
-        finishButton.setVisible(false);
         cancelButton = new Button(constants.cancelButtonHeading());
         
         addButton(previousButton);
@@ -172,6 +171,7 @@ public abstract class WizardDialog extends Dialog {
         stepData.set("step", page.getStepDescription());
         stepsStore.add(stepData);
         pages.add(page);
+        pagesStack.add(page);
         
     }
     
@@ -194,7 +194,7 @@ public abstract class WizardDialog extends Dialog {
         
         previousButton.setEnabled(currentPageIndex > 0);
         nextButton.setEnabled(currentPageIndex < pages.size() - 1 && valid);
-        finishButton.setVisible(currentPageIndex == pages.size() - 1 && valid);
+        finishButton.setEnabled(currentPageIndex == pages.size() - 1 && valid);
     }
     
     /**
@@ -218,9 +218,7 @@ public abstract class WizardDialog extends Dialog {
         // highlight the current step
         listView.getSelectionModel().select(index, false);
         
-        if (!activePage.isPageRendered()) {
-            activePage.renderPage();
-        }
+        activePage.renderPage();
         
         activePage.prepareToShow();
         
@@ -229,6 +227,7 @@ public abstract class WizardDialog extends Dialog {
         
         // ...and update the buttons status
         updateNavigationState();
+        
     }
     
     /**
