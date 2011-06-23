@@ -26,7 +26,11 @@ import com.emitrom.easygwt.wf.client.resources.i18n.I18Constants;
 import com.emitrom.easygwt.wf.client.utils.Util;
 import com.extjs.gxt.ui.client.Style.LayoutRegion;
 import com.extjs.gxt.ui.client.data.BaseModelData;
+import com.extjs.gxt.ui.client.data.ModelData;
 import com.extjs.gxt.ui.client.event.ButtonEvent;
+import com.extjs.gxt.ui.client.event.ComponentEvent;
+import com.extjs.gxt.ui.client.event.Events;
+import com.extjs.gxt.ui.client.event.Listener;
 import com.extjs.gxt.ui.client.event.SelectionListener;
 import com.extjs.gxt.ui.client.store.ListStore;
 import com.extjs.gxt.ui.client.widget.Dialog;
@@ -307,6 +311,17 @@ public abstract class WizardDialog extends Dialog {
                 });
             }
         });
+        
+        listView.addListener(Events.OnClick, new Listener<ComponentEvent>() {
+			@Override
+			public void handleEvent(ComponentEvent be) {
+				@SuppressWarnings("unchecked")
+				BaseModelData foo = ((ListView<BaseModelData>) be.getComponent()).getSelectionModel().getSelectedItem();
+				int index = listView.getStore().indexOf(foo);
+				currentPageIndex = index;
+				setActivePage(index);
+			}
+		});
         
     }
     

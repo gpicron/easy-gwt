@@ -6,6 +6,7 @@ import com.emitrom.easygwt.wf.client.column.core.ColumnView;
 import com.emitrom.easygwt.wf.client.wizard.WizardDialog;
 import com.emitrom.easygwt.wf.client.wizard.WizardPage;
 import com.extjs.gxt.ui.client.widget.ContentPanel;
+import com.extjs.gxt.ui.client.widget.form.FormPanel;
 import com.extjs.gxt.ui.client.widget.form.TextField;
 import com.extjs.gxt.ui.client.widget.layout.FitLayout;
 import com.google.gwt.user.client.ui.AbstractImagePrototype;
@@ -65,8 +66,8 @@ public class MyView extends ColumnView {
 		@Override
 		public void renderPage() {
 			
-			ContentPanel c = new ContentPanel();
-			c.setLayout(new FitLayout());
+			FormPanel c = new FormPanel();
+			c.setHeading("Welcom Page");
 			TextField<String> field = new TextField<String>();
 			field.setFieldLabel("FIELD");
 			c.add(field);
