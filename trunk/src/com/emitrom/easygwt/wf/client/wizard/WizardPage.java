@@ -73,4 +73,20 @@ public abstract class WizardPage extends LayoutContainer implements BeanModelTag
      * Saves this page's state to the wizard model.
      */
     public abstract void saveModel();
+    
+    /**
+     * This method performs any prerequisite activities before the page is entered, but after
+     * it has been rendered. This is particularly useful if the page must fill in values or
+     * check constraints using previously values from earlier pages in the wizard.
+     */
+    public void prepareToShow() {        
+    }
+    
+    /**
+     * This method performs any activities before the page is exited, specifically saves the
+     * model.  The user has the ability to do other tasks here as well.
+     */
+    public void prepareToHide() {
+        saveModel();
+    }
 }
