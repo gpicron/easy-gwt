@@ -27,6 +27,7 @@ import com.emitrom.easygwt.wf.client.utils.Util;
 import com.extjs.gxt.ui.client.Style.LayoutRegion;
 import com.extjs.gxt.ui.client.data.BaseModelData;
 import com.extjs.gxt.ui.client.event.ButtonEvent;
+import com.extjs.gxt.ui.client.event.Events;
 import com.extjs.gxt.ui.client.event.SelectionListener;
 import com.extjs.gxt.ui.client.store.ListStore;
 import com.extjs.gxt.ui.client.widget.ContentPanel;
@@ -67,8 +68,6 @@ public abstract class WizardDialog extends Dialog {
     private ContentPanel stepsPanel;
     private ListView<BaseModelData> listView;
     private ListStore<BaseModelData> stepsStore;
-//    private ListStore<BeanModel> stepsStore;
-//    private Grid<BeanModel> stepsGrid;
     
     // navigation buttons
     private Button previousButton;
@@ -226,7 +225,7 @@ public abstract class WizardDialog extends Dialog {
         boolean valid = getCurrentPage().isValid();
         
         previousButton.setEnabled(currentPageIndex > 0);
-        nextButton.setEnabled(currentPageIndex < pages.size() && valid);
+        nextButton.setEnabled(currentPageIndex < pages.size() - 1 && valid);
         finishButton.setEnabled(currentPageIndex == pages.size() - 1 && valid);
     }
     
@@ -255,6 +254,8 @@ public abstract class WizardDialog extends Dialog {
             activePage.renderPage();
         }
         
+        activePage.prepareToShow();
+        
         // switch to the page
         pagesLayout.setActiveItem(activePage);
         
@@ -270,7 +271,7 @@ public abstract class WizardDialog extends Dialog {
         WizardPage currentPage = getCurrentPage();
         
         if (currentPage.isValid()) {
-            currentPage.saveModel();
+            currentPage.prepareToHide();
             setActivePage(++currentPageIndex);
         }
     }

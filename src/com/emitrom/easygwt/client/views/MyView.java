@@ -6,6 +6,7 @@ import com.emitrom.easygwt.wf.client.column.core.ColumnView;
 import com.emitrom.easygwt.wf.client.wizard.WizardDialog;
 import com.emitrom.easygwt.wf.client.wizard.WizardPage;
 import com.extjs.gxt.ui.client.widget.form.TextField;
+import com.extjs.gxt.ui.client.widget.layout.CenterLayout;
 import com.google.gwt.user.client.ui.AbstractImagePrototype;
 import com.google.inject.Inject;
 
@@ -42,6 +43,10 @@ public class MyView extends ColumnView {
 	
 	private class WelcomePage extends WizardPage {
 
+	    public WelcomePage() {
+	        setLayout(new CenterLayout());
+	    }
+	    
 		@Override
 		public boolean isValid() {
 			return true;
