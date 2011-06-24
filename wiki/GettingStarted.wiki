@@ -15,6 +15,16 @@
 
 to your X.gwt.xml.
 
+  * You should by now have the following dir hierarchy under war:
+
+     war
+        /resources
+           /gxt
+
+  * Add a couple of directories the final result should look like:
+
+  [ ]
+
   * In your GWT project's entry point class, add:
 
 {{{
