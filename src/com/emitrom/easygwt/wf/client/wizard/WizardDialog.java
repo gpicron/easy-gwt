@@ -19,18 +19,13 @@
  ******************************************************************************/
 package com.emitrom.easygwt.wf.client.wizard;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.emitrom.easygwt.wf.client.resources.i18n.I18Constants;
 import com.emitrom.easygwt.wf.client.utils.Util;
 import com.extjs.gxt.ui.client.Style.LayoutRegion;
 import com.extjs.gxt.ui.client.data.BaseModelData;
-import com.extjs.gxt.ui.client.data.ModelData;
 import com.extjs.gxt.ui.client.event.ButtonEvent;
-import com.extjs.gxt.ui.client.event.ComponentEvent;
-import com.extjs.gxt.ui.client.event.Events;
-import com.extjs.gxt.ui.client.event.Listener;
 import com.extjs.gxt.ui.client.event.SelectionListener;
 import com.extjs.gxt.ui.client.store.ListStore;
 import com.extjs.gxt.ui.client.widget.Dialog;
@@ -55,7 +50,7 @@ public abstract class WizardDialog extends Dialog {
     protected I18Constants constants = Util.getConstants();
     protected WizardModel model;
     protected int currentPageIndex;
-    
+
     // Wizard heading
     
     // main page content
@@ -113,7 +108,7 @@ public abstract class WizardDialog extends Dialog {
         listView = new ListView<BaseModelData>();
         listView.setStyleName("wf-navigation-wizard");
         listView.setDisplayProperty("step");
-        listView.disableEvents(true);
+		listView.disableEvents(true);
         
         stepsStore = new ListStore<BaseModelData>();
         listView.setStore(stepsStore);
@@ -174,7 +169,14 @@ public abstract class WizardDialog extends Dialog {
         stepData.set("step", page.getStepDescription());
         stepsStore.add(stepData);        
         pagesStack.add(page);
+        page.renderPage();
         
+    }
+    
+    public void addPageList(List<WizardPage> pageList) {
+    	for (WizardPage page : pageList) {
+    		addPage(page);
+    	}
     }
     
     /**
@@ -219,8 +221,6 @@ public abstract class WizardDialog extends Dialog {
         
         // highlight the current step
         listView.getSelectionModel().select(index, false);
-        
-        activePage.renderPage();
         
         activePage.prepareToShow();
         
@@ -309,17 +309,6 @@ public abstract class WizardDialog extends Dialog {
                 });
             }
         });
-        
-        listView.addListener(Events.OnClick, new Listener<ComponentEvent>() {
-			@Override
-			public void handleEvent(ComponentEvent be) {
-				@SuppressWarnings("unchecked")
-				BaseModelData foo = ((ListView<BaseModelData>) be.getComponent()).getSelectionModel().getSelectedItem();
-				int index = listView.getStore().indexOf(foo);
-				currentPageIndex = index;
-				setActivePage(index);
-			}
-		});
         
     }
     
