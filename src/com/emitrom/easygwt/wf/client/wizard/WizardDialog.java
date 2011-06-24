@@ -108,8 +108,13 @@ public abstract class WizardDialog extends Dialog {
         listView = new ListView<BaseModelData>();
         listView.setStyleName("wf-navigation-wizard");
         listView.setDisplayProperty("step");
-		listView.disableEvents(true);
-		listView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        Scheduler.get().scheduleDeferred(new ScheduledCommand() {
+			@Override
+			public void execute() {
+				listView.disableEvents(true);
+			}
+		});
+		listView.setBorders(true);
         
         stepsStore = new ListStore<BaseModelData>();
         listView.setStore(stepsStore);
@@ -142,7 +147,7 @@ public abstract class WizardDialog extends Dialog {
     	
         pagesLayout = new CardLayout();
         pagesStack = new LayoutContainer();
-        pagesStack.setLayout(pagesLayout);        
+        pagesStack.setLayout(pagesLayout);
         
         add(pagesStack, new BorderLayoutData(LayoutRegion.CENTER));
         

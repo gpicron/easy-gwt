@@ -59,12 +59,14 @@ public class MyView extends ColumnView {
 		@Override
 		public void renderPage() {
 			
-			FormPanel c = new FormPanel();
-			c.setHeading(pageDescription);
+			FormPanel formPanel = new FormPanel();
+			formPanel.setHeading(pageDescription);
+			formPanel.setIcon(AbstractImagePrototype.create(icons.house()));
+			formPanel.setBodyBorder(false);
 			TextField<String> field = new TextField<String>();
 			field.setFieldLabel("FIELD");
-			c.add(field);
-			add(c);
+			formPanel.add(field);
+			add(formPanel);
 			
 		}
 
