@@ -24,6 +24,7 @@ import java.util.List;
 import com.emitrom.easygwt.wf.client.resources.i18n.I18Constants;
 import com.emitrom.easygwt.wf.client.utils.Util;
 import com.extjs.gxt.ui.client.Style.LayoutRegion;
+import com.extjs.gxt.ui.client.Style.SelectionMode;
 import com.extjs.gxt.ui.client.data.BaseModelData;
 import com.extjs.gxt.ui.client.event.ButtonEvent;
 import com.extjs.gxt.ui.client.event.SelectionListener;
@@ -69,8 +70,6 @@ public abstract class WizardDialog extends Dialog {
 
     /**
      * Constructor.
-     * 
-     * @param model the wizard model
      */
     public WizardDialog() {
         this(new WizardModel());
@@ -89,6 +88,7 @@ public abstract class WizardDialog extends Dialog {
     	setResizable(false);
     	
         this.model = model;        
+        this.currentPageIndex = 0;
                 
         initSteps();
         addButtons();
@@ -109,6 +109,7 @@ public abstract class WizardDialog extends Dialog {
         listView.setStyleName("wf-navigation-wizard");
         listView.setDisplayProperty("step");
 		listView.disableEvents(true);
+		listView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         
         stepsStore = new ListStore<BaseModelData>();
         listView.setStore(stepsStore);
@@ -152,7 +153,7 @@ public abstract class WizardDialog extends Dialog {
      */
     public void show() {        
         if (getPageCount() > 0) {
-            setActivePage(0);         
+            setActivePage(currentPageIndex);         
         }
         
         super.show();
@@ -173,7 +174,12 @@ public abstract class WizardDialog extends Dialog {
         
     }
     
-    public void addPageList(List<WizardPage> pageList) {
+    /**
+     * Adds a list of pages to this wizard.
+     * 
+     * @param pageList a List of WizardPage objects.
+     */
+    public void addPages(List<WizardPage> pageList) {
     	for (WizardPage page : pageList) {
     		addPage(page);
     	}
@@ -259,6 +265,9 @@ public abstract class WizardDialog extends Dialog {
         this.hide();
     }
     
+    /**
+     * Adds listeners to the widgets in this class.
+     */
     private void addListeners() {
     	
         previousButton.addSelectionListener(new SelectionListener<ButtonEvent>() {

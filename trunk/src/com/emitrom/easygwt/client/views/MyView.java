@@ -44,7 +44,7 @@ public class MyView extends ColumnView {
 		wizardPageList.add(new WelcomePage());
 		wizardPageList.add(new WelcomePage());
 		
-		wizard.addPageList(wizardPageList);
+		wizard.addPages(wizardPageList);
 		
 		wizard.show();
 		
