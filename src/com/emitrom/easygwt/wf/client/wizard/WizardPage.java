@@ -29,30 +29,63 @@ import com.extjs.gxt.ui.client.widget.LayoutContainer;
  *
  */
 public abstract class WizardPage extends LayoutContainer {
-    
+
+	protected boolean valid = true;
+	protected String pageDescription;
+	protected String stepDescription;
+	
+	public WizardPage() {}
+	
+	public WizardPage(String pageDescription, String stepDescription) {
+		this.pageDescription = pageDescription;
+		this.stepDescription = stepDescription;
+	}
+
+    /**
+	 * @return the pageDescription
+	 */
+	public String getPageDescription() {
+		return pageDescription;
+	}
+
+	/**
+	 * @param pageDescription the pageDescription to set
+	 */
+	public void setPageDescription(String pageDescription) {
+		this.pageDescription = pageDescription;
+	}
+
+	/**
+	 * @return the stepDescription
+	 */
+	public String getStepDescription() {
+		return stepDescription;
+	}
+
+	/**
+	 * @param stepDescription the stepDescription to set
+	 */
+	public void setStepDescription(String stepDescription) {
+		this.stepDescription = stepDescription;
+	}
+
     /** 
      * Is this page valid so the wizard can advance.
      * 
      * @return boolean true if progress can be made; false otherwise
      */
-    public abstract boolean isValid();
-    
-    /**
-     * Gets this page's description.
-     * 
-     * @return String descriptive text that is displayed in the wizard's header.
-     */
-    public abstract String getPageDescription();
-    
-    /**
-     * Gets this page's step text.  This text is displayed on the left hand side of
-     * the wizard, indicating the step the wizard is currently in.
-     * 
-     * @return String short text that goes in the steps panel of the wizard. 
-     */
-    public abstract String getStepDescription();
-    
-    /**
+    public boolean isValid() {
+    	return valid;
+    }
+
+	/**
+	 * @param valid the valid to set
+	 */
+	public void setValid(boolean valid) {
+		this.valid = valid;
+	}
+
+	/**
      * Renders this page.
      */
     public abstract void renderPage();

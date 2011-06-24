@@ -39,10 +39,10 @@ public class MyView extends ColumnView {
 		wizard.setHeading("New SnapShot Wizard");
 		
 		List<WizardPage> wizardPageList = new ArrayList<WizardPage>();
-		wizardPageList.add(new WelcomePage());
-		wizardPageList.add(new WelcomePage());
-		wizardPageList.add(new WelcomePage());
-		wizardPageList.add(new WelcomePage());
+		wizardPageList.add(new WelcomePage("Welcome Page", "Welcome"));
+		wizardPageList.add(new WelcomePage("First Page", "First Page"));
+		wizardPageList.add(new WelcomePage("Second Page", "Second Page"));
+		wizardPageList.add(new WelcomePage("Third Page", "Third Page"));
 		
 		wizard.addPages(wizardPageList);
 		
@@ -52,27 +52,15 @@ public class MyView extends ColumnView {
 	
 	private class WelcomePage extends WizardPage {
 		
-		@Override
-		public boolean isValid() {
-			return true;
-		}
-
-		@Override
-		public String getPageDescription() {
-			return "Welcome Page";
-		}
-
-		@Override
-		public String getStepDescription() {
-			return "Welcome";
+		public WelcomePage(String pageDescription, String stepDescription) {
+			super(pageDescription, stepDescription);
 		}
 
 		@Override
 		public void renderPage() {
 			
-			System.out.println("HERE");
 			FormPanel c = new FormPanel();
-			c.setHeading("Welcom Page");
+			c.setHeading(pageDescription);
 			TextField<String> field = new TextField<String>();
 			field.setFieldLabel("FIELD");
 			c.add(field);

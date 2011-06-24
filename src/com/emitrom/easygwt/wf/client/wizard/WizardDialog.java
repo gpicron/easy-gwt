@@ -244,11 +244,12 @@ public abstract class WizardDialog extends Dialog {
     private void next() {
     	
         WizardPage currentPage = getCurrentPage();
+        currentPage.prepareToHide();
         
         if (currentPage.isValid()) {
-            currentPage.prepareToHide();
             setActivePage(++currentPageIndex);
         }
+        
     }
     
     /**
