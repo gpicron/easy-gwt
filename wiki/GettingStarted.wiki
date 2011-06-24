@@ -17,9 +17,11 @@ to your X.gwt.xml.
 
   * You should by now have the following dir hierarchy under war:
 
+{{{
      war
         => resources
            => gxt
+}}}
 
   * Add a couple of directories and the final result should look like this excluding the gwt4air directory (Alain from gwt4air is working very hard to provide Easy integration with us).
 
