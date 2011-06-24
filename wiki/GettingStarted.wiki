@@ -18,8 +18,8 @@ to your X.gwt.xml.
   * You should by now have the following dir hierarchy under war:
 
      war
-        /resources
-           /gxt
+        => resources
+           => gxt
 
   * Add a couple of directories and the final result should look like:
 
