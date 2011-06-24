@@ -1,14 +1,15 @@
 package com.emitrom.easygwt.client.views;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.emitrom.easygwt.client.resources.SampleIcons;
 import com.emitrom.easygwt.client.resources.I18N.SampleConstants;
 import com.emitrom.easygwt.wf.client.column.core.ColumnView;
 import com.emitrom.easygwt.wf.client.wizard.WizardDialog;
 import com.emitrom.easygwt.wf.client.wizard.WizardPage;
-import com.extjs.gxt.ui.client.widget.ContentPanel;
 import com.extjs.gxt.ui.client.widget.form.FormPanel;
 import com.extjs.gxt.ui.client.widget.form.TextField;
-import com.extjs.gxt.ui.client.widget.layout.FitLayout;
 import com.google.gwt.user.client.ui.AbstractImagePrototype;
 import com.google.inject.Inject;
 
@@ -37,10 +38,13 @@ public class MyView extends ColumnView {
 		wizard.setIcon(AbstractImagePrototype.create(icons.house()));
 		wizard.setHeading("New SnapShot Wizard");
 		
-		wizard.addPage(new WelcomePage());
-		wizard.addPage(new WelcomePage());
-		wizard.addPage(new WelcomePage());
-		wizard.addPage(new WelcomePage());
+		List<WizardPage> wizardPageList = new ArrayList<WizardPage>();
+		wizardPageList.add(new WelcomePage());
+		wizardPageList.add(new WelcomePage());
+		wizardPageList.add(new WelcomePage());
+		wizardPageList.add(new WelcomePage());
+		
+		wizard.addPageList(wizardPageList);
 		
 		wizard.show();
 		
@@ -66,6 +70,7 @@ public class MyView extends ColumnView {
 		@Override
 		public void renderPage() {
 			
+			System.out.println("HERE");
 			FormPanel c = new FormPanel();
 			c.setHeading("Welcom Page");
 			TextField<String> field = new TextField<String>();
