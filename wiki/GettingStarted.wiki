@@ -21,7 +21,7 @@ to your X.gwt.xml.
         => resources
            => gxt
 
-  * Add a couple of directories and the final result should look like this excluding the gwt4air directory (We are working very hard to provide Easy integration with that project):
+  * Add a couple of directories and the final result should look like this excluding the gwt4air directory (Alain from gwt4air is working very hard to provide Easy integration with us).
 
 [http://easy-gwt.googlecode.com/svn/trunk/src/com/emitrom/easygwt/client/resources/images/war_dir_structure.png ]
 
