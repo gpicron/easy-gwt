@@ -170,6 +170,7 @@ public abstract class WizardDialog extends Dialog {
         stepData.set("step", page.getStepDescription());
         stepsStore.add(stepData);        
         pagesStack.add(page);
+        page.setModel(model);
         page.renderPage();
         
     }

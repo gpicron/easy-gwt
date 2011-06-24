@@ -33,6 +33,7 @@ public abstract class WizardPage extends LayoutContainer {
 	protected boolean valid = true;
 	protected String pageDescription;
 	protected String stepDescription;
+	protected WizardModel model;
 	
 	public WizardPage() {}
 	
@@ -69,7 +70,22 @@ public abstract class WizardPage extends LayoutContainer {
 		this.stepDescription = stepDescription;
 	}
 
-    /** 
+    /**
+	 * @return the model
+	 */
+	@SuppressWarnings("unchecked")
+	public WizardModel getModel() {
+		return model;
+	}
+
+	/**
+	 * @param model the model to set
+	 */
+	public void setModel(WizardModel model) {
+		this.model = model;
+	}
+
+	/** 
      * Is this page valid so the wizard can advance.
      * 
      * @return boolean true if progress can be made; false otherwise
@@ -110,4 +126,5 @@ public abstract class WizardPage extends LayoutContainer {
     public void prepareToHide() {
         saveModel();
     }
+
 }
