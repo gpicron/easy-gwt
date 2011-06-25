@@ -1,13 +1,23 @@
 #summary Authentication
 
-= Introduction =
+== Login Dialog ==
 
-Add your content here.
+A Login Dialog is provided to aid the developer in the process of creating an authentication mechanism. The Login Dialog consists of:
 
+a) A User Name field with a very simple email validator. This validator can be overridden by obtaining access to the field's instance and setting a new one.
 
-= Details =
+b) A password field.
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+c) Validation is built in and the OK button will not be set to enabled until both User Name and Password fields have been filled out.
+
+d) There are also two additional buttons that are hidden by default containing a "Forgot Password" button as well as a "Sign Up" button.
+
+=== Authenticator Interface ===
+
+The framework provides an Authenticator interface with the following methods:
+
+{{{
+	public void login();
+	public void logout();
+	public void onSuccess();
+}}}
