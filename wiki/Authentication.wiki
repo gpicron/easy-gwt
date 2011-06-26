@@ -36,7 +36,7 @@ Let's create a Sample implementation that will act as one of the many possible w
 
 {{{
 
-public class SampleLoginAuthenticator implements Authenticator {
+public abstract class SampleLoginAuthenticator implements Authenticator {
 
    private LoginDialog loginDialog;
 	
@@ -66,11 +66,6 @@ public class SampleLoginAuthenticator implements Authenticator {
    @Override
    public void logout() {
       // TODO Auto-generated method stub
-   }
-
-   @Override
-   public void onSuccess() {
-      this.onSuccess();
    }
 
 }
