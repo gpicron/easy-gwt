@@ -48,6 +48,7 @@ import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.user.client.ui.AbstractImagePrototype;
 import com.google.gwt.user.client.ui.Image;
+import com.google.gwt.user.client.ui.IsWidget;
 
 /**
  *
@@ -66,7 +67,7 @@ import com.google.gwt.user.client.ui.Image;
  * @author Alfredo Quiroga-Villamil
  *
  */
-public class LoginDialog extends Dialog {
+public class LoginDialog extends Dialog implements IsWidget {
 
 	private static final String LOGIN_BANNER_IMAGE = "resources/easygwt/images/login_banner.png";
 	private Authenticator authenticator;
