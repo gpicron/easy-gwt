@@ -12,7 +12,7 @@ c) Validation is built in and the OK button will not be set to enabled until bot
 
 d) There are also two additional buttons that are hidden by default containing a "Forgot Password" button as well as a "Sign Up" button.
 
-The LoginDialog constructor takes an Authenticator interface as its only argument. See the constructor's signature below:
+The Login Dialog constructor takes an Authenticator interface as its only argument. See the constructor's signature below:
 
 {{{
 public LoginDialog(Authenticator authenticator) {
