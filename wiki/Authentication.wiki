@@ -81,7 +81,7 @@ public class SampleLoginAuthenticator implements Authenticator {
 
 By creating classes that implement the Authenticator interface you can have a wide range of possibilities for Authentication mechanisms. You could implement an LDAP Authenticator for instance or an SSH based Authentication mechanism for example. Both could be combined with the Login Dialog to give you access to an already implemented Login Dialog with the basic buttons needed and built in validation necessary for an enterprise application.
 
-Let's finally combine all the things mentioned above and see what it would look like. In your entry point class for your GWT project you would have something like the following:
+Let's finally combine all the things mentioned above and see what it would look like. In your entry point class for your GWT project you would have something like the following in your *_onModuleLoad()*_
 
 {{{
 
