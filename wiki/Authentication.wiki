@@ -106,3 +106,8 @@ Let's finally combine all the things mentioned above and see what it would look 
    };
 
 }}}
+
+Easy isn't it? Yes just:
+
+   * Implement Authenticator.
+   * Override onSuccess.
