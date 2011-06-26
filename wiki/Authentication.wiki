@@ -4,15 +4,15 @@
 
 A Login Dialog is provided to aid the developer in the process of creating an authentication mechanism. The Login Dialog consists of:
 
-a) A User Name field with a very simple email validator. This validator can be overridden by obtaining access to the field's instance and setting a new one.
+a) A User Name field with a very simple email validator. This validator can be overridden by obtaining access to the field's instance and setting a new validation scheme.
 
 b) A password field.
 
-c) Validation is built in and the OK button will not be set to enabled until both User Name and Password fields have been filled out.
+c) Validation is built in and the OK button will not be set to enabled until both User Name and Password fields have been filled out. This ensures that both field's values will never return null or empty.
 
 d) There are also two additional buttons that are hidden by default containing a "Forgot Password" button as well as a "Sign Up" button.
 
-The LoginDialog's constructor takes an Authenticator interface. See the constructor's signature below:
+The LoginDialog's constructor takes an Authenticator interface as its only argument. See the constructor's signature below:
 
 {{{
 public LoginDialog(Authenticator authenticator) {
@@ -30,7 +30,7 @@ The framework provides an Authenticator interface with the following methods:
    public void onSuccess();
 }}}
 
-Many implementations can be created to allow users to authenticate and the LoginDialog becomes an easy way to support this.
+Many Authentication implementations can be created to allow users to validate login credentials. The LoginDialog widget provides the necessary user interface functionality to help the developer create user credential validation in an easy and fast maner.
 
 Let's create a Sample implementation that will act as one of the many possible ways in which the user could authenticate against the system.
 
@@ -74,9 +74,9 @@ public abstract class SampleLoginAuthenticator implements Authenticator {
 
 === Putting it all together ===
 
-By creating classes that implement the Authenticator interface you can have a wide range of possibilities for Authentication mechanisms. You could implement an LDAP Authenticator for instance or an SSH based Authentication mechanism for example. Both could be combined with the Login Dialog to give you access to an already implemented Login Dialog with the basic buttons needed and built in validation necessary for an enterprise application.
+By creating classes that implement the Authenticator interface you can have a wide range of possibilities for Authentication mechanisms. You could implement an LDAP Authenticator for instance or an SSH based one for example. Both could be combined with the Login Dialog to give you access to an already implemented Login Dialog user interface widget with all the basic buttons needed and built in validation necessary for an enterprise application.
 
-Let's finally combine all the things mentioned above and see what it would look like. In your entry point class for your GWT project you would have something like the following in your *_onModuleLoad()*_
+Let's finally combine all the things mentioned above and see what it would take to wire things together. In your entry's point class for your GWT project you would have something like the following under your *_onModuleLoad()*_ method:
 
 {{{
 
@@ -102,7 +102,7 @@ Let's finally combine all the things mentioned above and see what it would look 
 
 }}}
 
-Easy isn't it? Yes just:
+*Easy isn't it?* Yes just:
 
    * Implement Authenticator.
    * Override onSuccess.
