@@ -22,6 +22,9 @@ public interface SampleIcons extends ClientBundle {
 
 	@Source("icons/user.png")
 	ImageResource user();
+	
+	@Source("icons/door_out.png")
+	ImageResource doorOut();
 
 
 }
