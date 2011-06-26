@@ -10,6 +10,8 @@ import com.emitrom.easygwt.client.resources.I18N.SampleConstants;
 import com.emitrom.easygwt.wf.client.column.core.ColumnNavigationChild;
 import com.emitrom.easygwt.wf.client.column.core.ColumnNavigationParent;
 import com.emitrom.easygwt.wf.client.column.core.ColumnViewPort;
+import com.extjs.gxt.ui.client.event.ButtonEvent;
+import com.extjs.gxt.ui.client.event.SelectionListener;
 import com.extjs.gxt.ui.client.widget.button.Button;
 import com.extjs.gxt.ui.client.widget.form.LabelField;
 import com.extjs.gxt.ui.client.widget.toolbar.FillToolItem;
@@ -55,6 +57,12 @@ public class ApplicationController implements EntryPoint {
 				Button logoutButton = new Button();
 				logoutButton.setIcon(AbstractImagePrototype.create(icons.doorOut()));
 				logoutButton.setToolTip("Logout");
+				logoutButton.addSelectionListener(new SelectionListener<ButtonEvent>() {
+					@Override
+					public void componentSelected(ButtonEvent ce) {
+						logout();
+					}
+				});
 				
 				columnView.getNorthPanel().getNorthPanelToolBar().add(loggedInUser);
 				columnView.getNorthPanel().getNorthPanelToolBar().add(new SeparatorToolItem());
