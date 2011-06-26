@@ -20,6 +20,8 @@ public LoginDialog(Authenticator authenticator) {
 }
 }}}
 
+[http://easy-gwt.googlecode.com/svn/trunk/src/com/emitrom/easygwt/client/resources/images/login_dialog.png]
+
 === Authenticator Interface ===
 
 The framework provides an Authenticator interface with the following methods:
