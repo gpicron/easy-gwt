@@ -53,8 +53,8 @@ public class SampleLoginAuthenticator implements Authenticator {
       /**
         * Here you would typically have a call to a backend service for example (GWT-RPC)
         * or REST request and if successful invoke onSuccess. If not the LoginDialog
-        * will already provide the user with a failure message.
-        * Simple validation in this case shown below :)
+        * will provide the user with a failure message.
+        * Simple validation in this case shown below:
         */		
       if (userName.equals("demo@easy-gwt.com") && passWord.equals("demo")) {
          onSuccess();
