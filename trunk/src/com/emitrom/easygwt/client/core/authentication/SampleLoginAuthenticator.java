@@ -3,6 +3,7 @@ package com.emitrom.easygwt.client.core.authentication;
 import com.emitrom.easygwt.wf.client.authentication.Authenticator;
 import com.emitrom.easygwt.wf.client.widgets.dialogs.LoginDialog;
 import com.extjs.gxt.ui.client.state.StateManager;
+import com.google.gwt.user.client.Window;
 
 public abstract class SampleLoginAuthenticator implements Authenticator {
 
@@ -29,7 +30,7 @@ public abstract class SampleLoginAuthenticator implements Authenticator {
 
 	@Override
 	public void logout() {
-		// TODO Auto-generated method stub
+		Window.Location.reload();
 	}
 
 }
