@@ -19,6 +19,7 @@
 package com.emitrom.easygwt.wf.client.resources;
 
 import com.google.gwt.resources.client.ClientBundle;
+import com.google.gwt.resources.client.ImageResource;
 
 /**
  * Images used by EasyGWT
@@ -27,5 +28,6 @@ import com.google.gwt.resources.client.ClientBundle;
  *
  */
 public interface Images extends ClientBundle {
-
+    @Source("images/icons/icon-error.gif")
+    ImageResource errorImage();
 }

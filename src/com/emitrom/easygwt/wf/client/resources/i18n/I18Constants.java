@@ -95,4 +95,13 @@ public interface I18Constants extends Constants {
 	
 	@DefaultStringValue("Cancel")
 	String cancelButtonHeading();
+
+	@DefaultStringValue("Ok")
+	String okButtonHeading();
+	
+	@DefaultStringValue("Details")
+	String detailsButtonHeading();
+	
+	@DefaultStringValue("at")
+	String at();
 }

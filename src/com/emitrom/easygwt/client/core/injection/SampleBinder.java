@@ -3,6 +3,7 @@ package com.emitrom.easygwt.client.core.injection;
 import com.emitrom.easygwt.client.resources.SampleIcons;
 import com.emitrom.easygwt.client.resources.SampleImages;
 import com.emitrom.easygwt.client.resources.I18N.SampleConstants;
+import com.emitrom.easygwt.client.views.MyErrorDialogView;
 import com.emitrom.easygwt.client.views.MySecondView;
 import com.emitrom.easygwt.client.views.MyView;
 import com.google.gwt.inject.client.AbstractGinModule;
@@ -25,6 +26,7 @@ public class SampleBinder extends AbstractGinModule {
 		 */
 		bind(MyView.class);
 		bind(MySecondView.class);
+		bind(MyErrorDialogView.class);
 		
 	}
 
