@@ -21,6 +21,9 @@ public interface SampleConstants extends Constants {
 
 	@DefaultStringValue("Parent Two - Child Two")
 	String parentTwoChildTwo();
+	
+	@DefaultStringValue("Parent Two - Child Three")
+    String parentTwoChildThree();
 
 	@DefaultStringValue("Sample Constant String")
 	String sampleConstantString();

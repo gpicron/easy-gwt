@@ -97,6 +97,11 @@ public class ApplicationController implements EntryPoint {
 						constants.parentTwoChildTwo());
 				parent2Child2.setIcon(icons.userComment());
 				parent2.addNavigationChild(parent2Child2);
+				
+				ColumnNavigationChild parent2Child3 = new ColumnNavigationChild(injector.getMyErrorDialogView(),
+				        constants.parentTwoChildThree());
+				parent2Child3.setIcon(icons.coins());
+				parent2.addNavigationChild(parent2Child3);
 
 				navigationParentsList.add(parent1);
 				navigationParentsList.add(parent2);

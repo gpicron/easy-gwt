@@ -75,4 +75,39 @@ public class Util {
 		return css;
 	}
 	
+	/**
+	 * Gets the contents of the given Throwable's stack strace as a String.
+	 * 
+	 * @param throwable
+	 * @return String
+	 */
+	public static String getStackTrace(Throwable throwable) {
+	    StringBuilder sb = new StringBuilder();
+	    
+	    // Get the stack trace
+	    StackTraceElement stack[] = throwable.getStackTrace();
+
+	    // stack[0] contains the method that created the exception.
+	    // stack[stack.length-1] contains the oldest method call.
+	    
+	    sb.append(throwable.getClass().getName()).append("\n");
+	    
+	    for (int i = 0; i < stack.length; i++) {
+	        String filename = stack[i].getFileName();
+	        
+	        if (filename != null) {
+	            filename = "(" + filename + ":" + stack[i].getLineNumber() + ")"; 
+	        } else {
+	            filename = "";
+	        }
+	        	        
+	        sb.append("\t");
+	        sb.append("at ");
+	        sb.append(stack[i].getMethodName());
+	        sb.append(filename);
+	        sb.append("\n");	       
+	    }
+	    
+	    return sb.toString();
+	}
 }
