@@ -48,7 +48,7 @@ import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 public abstract class WizardDialog extends Dialog {
 	
     protected I18Constants constants = Util.getConstants();
-    protected WizardModel model;
+    protected WizardModelInterface model;
     protected int currentPageIndex;
 
     // Wizard heading

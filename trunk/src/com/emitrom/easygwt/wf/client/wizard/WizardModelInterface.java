@@ -19,41 +19,12 @@
  ******************************************************************************/
 package com.emitrom.easygwt.wf.client.wizard;
 
-import java.util.HashMap;
-
 /**
- * Stores wizard attributes.
+ * Wizard Model interface. Used as a Tag for any Wizard model implementations.
  * 
- * @author <a href=mailto:david@emitrom.com>David La Motta</a>
+ * @author Alfredo Quiroga-Villamil
  *
  */
-public class WizardModel implements WizardModelInterface {
-	
-    private HashMap<String, Object> properties;
-    
-    /**
-     * Constructor.
-     */
-    public WizardModel() {
-        properties = new HashMap<String, Object>();
-    }
-    
-    /**
-     * Sets a property
-     * 
-     * @param key
-     * @param value
-     */
-    public void setProperty(String key, Object value) {
-        properties.put(key, value);
-    }
-    
-    /**
-     * Gets a property
-     * 
-     * @return Object
-     */
-    public Object getProperty(String key) {
-        return properties.get(key);
-    }
+public interface WizardModelInterface {
+
 }
