@@ -33,7 +33,7 @@ public abstract class WizardPage extends LayoutContainer {
 	protected boolean valid = true;
 	protected String pageDescription;
 	protected String stepDescription;
-	protected WizardModel model;
+	protected WizardModelInterface model;
 	
 	public WizardPage() {}
 	
@@ -74,14 +74,14 @@ public abstract class WizardPage extends LayoutContainer {
 	 * @return the model
 	 */
 	@SuppressWarnings("unchecked")
-	public WizardModel getModel() {
+	public WizardModelInterface getModel() {
 		return model;
 	}
 
 	/**
 	 * @param model the model to set
 	 */
-	public void setModel(WizardModel model) {
+	public void setModel(WizardModelInterface model) {
 		this.model = model;
 	}
 
