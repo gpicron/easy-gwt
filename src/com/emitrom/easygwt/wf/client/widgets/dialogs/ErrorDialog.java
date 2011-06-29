@@ -106,8 +106,9 @@ public class ErrorDialog extends Dialog implements IsWidget {
         setBodyBorder(false);               
         setHideOnButtonClick(true);        
         setLayout(new BorderLayout());               
-        setWidth(350);
+        setWidth(400);
         setHeight(200);
+        setShadow(false);
                
         LayoutContainer imageContainer = new LayoutContainer();        
         Image image = AbstractImagePrototype.create(Util.getImages().errorImage()).createImage();
@@ -143,6 +144,7 @@ public class ErrorDialog extends Dialog implements IsWidget {
             setHeight(400);
             
             detailsButton.setEnabled(true);
+            detailsButton.setText(Util.getConstants().noDetailsButtonHeading());
             
             // we need a container here for the bottom component
             detailsContainer = new LayoutContainer();
@@ -170,7 +172,12 @@ public class ErrorDialog extends Dialog implements IsWidget {
                     @Override
                     public void execute() {
                         detailsContainer.setVisible(!detailsContainer.isVisible());
-                        ErrorDialog.this.repaint();
+                        
+                        if (detailsContainer.isVisible()) {
+                            detailsButton.setText(Util.getConstants().noDetailsButtonHeading());                            
+                        } else {
+                            detailsButton.setText(Util.getConstants().detailsButtonHeading());
+                        }                        
                     }
                 });
             }
