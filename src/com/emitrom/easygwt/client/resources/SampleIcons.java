@@ -25,6 +25,13 @@ public interface SampleIcons extends ClientBundle {
 	
 	@Source("icons/door_out.png")
 	ImageResource doorOut();
+	
+	@Source("icons/add.png")
+	ImageResource add();
+	
+	@Source("icons/delete.png")
+	ImageResource delete();
+
 
 
 }

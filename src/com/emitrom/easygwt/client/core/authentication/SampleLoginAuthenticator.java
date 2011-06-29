@@ -21,6 +21,7 @@ public abstract class SampleLoginAuthenticator implements Authenticator {
 		
 		if (userName.equals("demo@easy-gwt.com") && passWord.equals("demo")) {
 			StateManager.get().set("remember_me", userName);
+			loginDialog.hide();
 			onSuccess();
 		} else {
 			loginDialog.getLoginFailureMessageLabelField().setVisible(true);

@@ -4,28 +4,22 @@ import com.google.gwt.i18n.client.Constants;
 
 public interface SampleConstants extends Constants {
 
-	@DefaultStringValue("Parent One")
-	String parentOne();
+	@DefaultStringValue("Users View")
+	String usersViewHeading();
 	
-	@DefaultStringValue("Parent Two")
-	String parentTwo();
-	
-	@DefaultStringValue("Parent One - Child One")
-	String parentOneChildOne();
+	@DefaultStringValue("First Name")
+	String usersGridFirstNameColumnHeader();
 
-	@DefaultStringValue("Parent One - Child Two")
-	String parentOneChildTwo();
+	@DefaultStringValue("Last Name")
+	String usersGridLastNameColumnHeader();
 
-	@DefaultStringValue("Parent Two - Child One")
-	String parentTwoChildOne();
+	@DefaultStringValue("Email")
+	String usersGridEmailColumnHeader();
 
-	@DefaultStringValue("Parent Two - Child Two")
-	String parentTwoChildTwo();
-	
-	@DefaultStringValue("Parent Two - Child Three")
-    String parentTwoChildThree();
+	@DefaultStringValue("Add")
+	String usersGridAddButtonToolTip();
 
-	@DefaultStringValue("Sample Constant String")
-	String sampleConstantString();
+	@DefaultStringValue("Delete")
+	String usersGridDeleteButtonToolTip();
 
 }
