@@ -102,6 +102,9 @@ public interface I18Constants extends Constants {
 	@DefaultStringValue("Details")
 	String detailsButtonHeading();
 	
+	@DefaultStringValue("No Details")
+    String noDetailsButtonHeading();
+	
 	@DefaultStringValue("at")
 	String at();
 }
