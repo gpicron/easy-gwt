@@ -8,4 +8,4 @@
 *1.3.0*
 
  # Automatic History Support.
- # FishEye Navigation Widget.
+ # Fish Eye Navigation Widget.
