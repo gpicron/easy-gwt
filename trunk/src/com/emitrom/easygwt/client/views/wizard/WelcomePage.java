@@ -31,7 +31,7 @@ public class WelcomePage extends WizardPage {
 		welcomeContentPanel.setStyleAttribute("font-weight", "normal");
 		
 		StringBuilder welcomeMessage = new StringBuilder();
-		welcomeMessage.append("<h1>Welcome to the New User Wizard<h1/><br/>");
+		welcomeMessage.append("Welcome to the New User Wizard<br/>");
 		welcomeMessage.append("<br/>");
 		welcomeMessage.append("<p>This wizard is being used to demonstrate one of the many ways in which ");
 		welcomeMessage.append("wizards can be used. It is merely used as a sample to illustrate some of the functionality it offers.<p/>");

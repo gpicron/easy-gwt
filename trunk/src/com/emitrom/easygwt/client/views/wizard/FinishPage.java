@@ -57,7 +57,7 @@ public class FinishPage extends WizardPage {
 		finishContentPanel.removeAll();
 		
 		StringBuilder welcomeMessage = new StringBuilder();
-		welcomeMessage.append("<h1>Summary Page<h1/><br/>");
+		welcomeMessage.append("Summary Page<br/>");
 		welcomeMessage.append("<br/>");
 		welcomeMessage.append(constants.usersGridFirstNameColumnHeader() + ": ");
 		welcomeMessage.append(((WizardModel) model).getProperty("firstName"));
@@ -75,6 +75,7 @@ public class FinishPage extends WizardPage {
 		welcomeMessage.append(((WizardModel) model).getProperty("email"));
 
 		LabelField labelField = new LabelField();
+		labelField.setStyleAttribute("font", "12px tahoma,arial,helvetica,sans-serif");
 		labelField.setValue(welcomeMessage);
 
 		finishContentPanel.add(labelField);
