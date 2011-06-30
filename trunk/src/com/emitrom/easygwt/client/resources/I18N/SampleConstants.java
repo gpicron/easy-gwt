@@ -22,4 +22,7 @@ public interface SampleConstants extends Constants {
 	@DefaultStringValue("Delete")
 	String usersGridDeleteButtonToolTip();
 
+	@DefaultStringValue("Username")
+	String usersGridUserNameColumnHeader();
+
 }

@@ -20,6 +20,7 @@
 package com.emitrom.easygwt.wf.client.wizard;
 
 import com.extjs.gxt.ui.client.widget.LayoutContainer;
+import com.extjs.gxt.ui.client.widget.layout.FitLayout;
 
 /**
  * WizardPage represents an individual page in the wizard, and it contains methods
@@ -35,14 +36,34 @@ public abstract class WizardPage extends LayoutContainer {
 	protected String stepDescription;
 	protected WizardModelInterface model;
 	
-	public WizardPage() {}
+	private WizardDialog wizardDialog;
+	
+	public WizardPage() {
+		setStyleName("wf-images-wizard-center-background");
+		setLayout(new FitLayout());
+	}
 	
 	public WizardPage(String pageDescription, String stepDescription) {
+		super();
 		this.pageDescription = pageDescription;
 		this.stepDescription = stepDescription;
 	}
 
     /**
+	 * @return the wizardDialog
+	 */
+	public WizardDialog getWizardDialog() {
+		return wizardDialog;
+	}
+
+	/**
+	 * @param wizardDialog the wizardDialog to set
+	 */
+	public void setWizardDialog(WizardDialog wizardDialog) {
+		this.wizardDialog = wizardDialog;
+	}
+
+	/**
 	 * @return the pageDescription
 	 */
 	public String getPageDescription() {
@@ -108,6 +129,8 @@ public abstract class WizardPage extends LayoutContainer {
     
     /**
      * Saves this page's state to the wizard model.
+     * 
+     * This methods gets invoked automatically when the page is about to hide.
      */
     public abstract void saveModel();
     

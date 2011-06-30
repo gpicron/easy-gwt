@@ -19,7 +19,9 @@
  ******************************************************************************/
 package com.emitrom.easygwt.wf.client.wizard;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import com.emitrom.easygwt.wf.client.resources.i18n.I18Constants;
 import com.emitrom.easygwt.wf.client.utils.Util;
@@ -52,6 +54,8 @@ public abstract class WizardDialog extends Dialog {
     protected int currentPageIndex;
 
     // Wizard heading
+    
+    private Set<WizardPage> renderedPages;
     
     // main page content
     private LayoutContainer pagesStack;
@@ -98,6 +102,34 @@ public abstract class WizardDialog extends Dialog {
     }
     
     /**
+	 * @return the previousButton
+	 */
+	public Button getPreviousButton() {
+		return previousButton;
+	}
+
+	/**
+	 * @return the nextButton
+	 */
+	public Button getNextButton() {
+		return nextButton;
+	}
+
+	/**
+	 * @return the finishButton
+	 */
+	public Button getFinishButton() {
+		return finishButton;
+	}
+
+	/**
+	 * @return the cancelButton
+	 */
+	public Button getCancelButton() {
+		return cancelButton;
+	}
+
+	/**
      * Initializes the steps panel.  This can only be done after all the pages
      * have been added to the wizard, so this method is called when the wizard
      * is shown.
@@ -144,6 +176,7 @@ public abstract class WizardDialog extends Dialog {
      */
     private void initPagesStack() {
     	
+    	renderedPages = new HashSet<WizardPage>();
         pagesLayout = new CardLayout();
         pagesStack = new LayoutContainer();
         pagesStack.setLayout(pagesLayout);
@@ -168,14 +201,14 @@ public abstract class WizardDialog extends Dialog {
      * 
      * @param page the page to add.
      */
-    public void addPage(WizardPage page) {
+    public void addPage(final WizardPage page) {
     	
         BaseModelData stepData = new BaseModelData();
         stepData.set("step", page.getStepDescription());
         stepsStore.add(stepData);        
         pagesStack.add(page);
         page.setModel(model);
-        page.renderPage();
+        page.setWizardDialog(this);
         
     }
     
@@ -228,12 +261,24 @@ public abstract class WizardDialog extends Dialog {
      */
     private void setActivePage(int index) {
     	
-        WizardPage activePage = (WizardPage) pagesStack.getItem(index);        
+        final WizardPage activePage = (WizardPage) pagesStack.getItem(index);        
         
         // highlight the current step
         listView.getSelectionModel().select(index, false);
         
-        activePage.prepareToShow();
+		if (!renderedPages.contains(activePage)) {
+			activePage.renderPage();
+			renderedPages.add(activePage);
+		}
+
+        if (renderedPages.contains(activePage)) {
+            Scheduler.get().scheduleDeferred(new ScheduledCommand() {
+    			@Override
+    			public void execute() {
+    		        activePage.prepareToShow();	
+    			}
+    		});
+        }
         
         // switch to the page
         pagesLayout.setActiveItem(activePage);
@@ -250,7 +295,7 @@ public abstract class WizardDialog extends Dialog {
     	
         WizardPage currentPage = getCurrentPage();
         currentPage.prepareToHide();
-        
+
         if (currentPage.isValid()) {
             setActivePage(++currentPageIndex);
         }
@@ -261,6 +306,7 @@ public abstract class WizardDialog extends Dialog {
      * Goes back one page.
      */
     private void previous() {
+    	getCurrentPage().prepareToHide();
         setActivePage(--currentPageIndex);
     }
     

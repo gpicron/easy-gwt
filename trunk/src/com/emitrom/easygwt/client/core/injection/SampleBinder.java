@@ -4,6 +4,7 @@ import com.emitrom.easygwt.client.resources.SampleIcons;
 import com.emitrom.easygwt.client.resources.SampleImages;
 import com.emitrom.easygwt.client.resources.I18N.SampleConstants;
 import com.emitrom.easygwt.client.views.UsersView;
+import com.emitrom.easygwt.client.views.wizard.FinishPage;
 import com.emitrom.easygwt.client.views.wizard.UserInformationPage;
 import com.emitrom.easygwt.client.views.wizard.WelcomePage;
 import com.google.gwt.inject.client.AbstractGinModule;
@@ -31,6 +32,7 @@ public class SampleBinder extends AbstractGinModule {
 		 */
 		bind(WelcomePage.class);
 		bind(UserInformationPage.class);
+		bind(FinishPage.class);
 		
 	}
 
