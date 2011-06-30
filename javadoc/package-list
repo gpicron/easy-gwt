@@ -6,3 +6,4 @@ com.emitrom.easygwt.wf.client.resources
 com.emitrom.easygwt.wf.client.resources.i18n
 com.emitrom.easygwt.wf.client.utils
 com.emitrom.easygwt.wf.client.widgets.dialogs
+com.emitrom.easygwt.wf.client.wizard
