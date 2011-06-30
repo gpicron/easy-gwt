@@ -40,10 +40,10 @@ public class ApplicationController implements EntryPoint {
 		/**
 		 * Authenticate
 		 */
-//		new SampleLoginAuthenticator() {
-//
-//			@Override
-//			public void onSuccess() {
+		new SampleLoginAuthenticator() {
+
+			@Override
+			public void onSuccess() {
 				/**
 				 * Column View Sample
 				 */
@@ -52,7 +52,7 @@ public class ApplicationController implements EntryPoint {
 				columnView.getNorthPanel().getNorthPanelToolBar().add(new FillToolItem());
 				
 				LabelField loggedInUser = new LabelField();
-//				loggedInUser.setValue("<b>" + loginDialog.getUsernameTextField().getValue() + "<b/>"); 
+				loggedInUser.setValue("<b>" + loginDialog.getUsernameTextField().getValue() + "<b/>"); 
 				
 				Button logoutButton = new Button();
 				logoutButton.setIcon(AbstractImagePrototype.create(icons.doorOut()));
@@ -60,7 +60,7 @@ public class ApplicationController implements EntryPoint {
 				logoutButton.addSelectionListener(new SelectionListener<ButtonEvent>() {
 					@Override
 					public void componentSelected(ButtonEvent ce) {
-//						logout();
+						logout();
 					}
 				});
 				
@@ -83,9 +83,9 @@ public class ApplicationController implements EntryPoint {
 
 				columnView.addNavigationItems(navigationParentsList);
 
-//			}
-//			
-//		};
+			}
+			
+		};
 		
 	}
 	
