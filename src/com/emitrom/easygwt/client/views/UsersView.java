@@ -5,11 +5,13 @@ import java.util.List;
 
 import com.emitrom.easygwt.client.resources.SampleIcons;
 import com.emitrom.easygwt.client.resources.I18N.SampleConstants;
+import com.emitrom.easygwt.client.views.wizard.FinishPage;
 import com.emitrom.easygwt.client.views.wizard.UserInformationPage;
 import com.emitrom.easygwt.client.views.wizard.WelcomePage;
 import com.emitrom.easygwt.wf.client.column.core.ColumnView;
 import com.emitrom.easygwt.wf.client.widgets.dialogs.ErrorDialog;
 import com.emitrom.easygwt.wf.client.wizard.WizardDialog;
+import com.emitrom.easygwt.wf.client.wizard.WizardModel;
 import com.emitrom.easygwt.wf.client.wizard.WizardPage;
 import com.extjs.gxt.ui.client.Style.SelectionMode;
 import com.extjs.gxt.ui.client.data.BeanModel;
@@ -45,16 +47,14 @@ public class UsersView extends ColumnView {
 	
 	private WelcomePage welcomePage;
 	private UserInformationPage userInformationPage;
+	private FinishPage finishPage;
 
 	@Inject
 	public UsersView(SampleConstants constants, SampleIcons icons,
-			ListStore<BeanModel> usersGridListStore, WelcomePage welcomePage,
-			UserInformationPage userInformationPage) {
+			ListStore<BeanModel> usersGridListStore) {
 		this.constants = constants;
 		this.icons = icons;
 		this.usersGridListStore = usersGridListStore;
-		this.welcomePage = welcomePage;
-		this.userInformationPage = userInformationPage;
 		setLayout(new FitLayout());
 	}
 
@@ -95,7 +95,7 @@ public class UsersView extends ColumnView {
 
 		columnConfig = new ColumnConfig();
 		columnConfig.setId("userName");
-		columnConfig.setHeader(constants.usersGridLastNameColumnHeader());
+		columnConfig.setHeader(constants.usersGridUserNameColumnHeader());
 		columns.add(columnConfig);
 
 		columnConfig = new ColumnConfig();
@@ -131,22 +131,39 @@ public class UsersView extends ColumnView {
 					
 					@Override
 					public void finish() {
-						System.out.println("FINISH IS HERE");
+						
+						Users user = new Users();
+						WizardModel wizardModel = (WizardModel) model;
+						user.setFirstName((String) wizardModel.getProperty("firstName"));
+						user.setLastName((String) wizardModel.getProperty("lastName"));
+						user.setUserName((String) wizardModel.getProperty("userName"));
+						user.setEmail((String) wizardModel.getProperty("email"));
+						
+						usersGridListStore.add(BeanModelLookup.get().getFactory(Users.class).createModel(user));
+						
 					}
+					
 				};
 				wizard.setIcon(AbstractImagePrototype.create(icons.house()));
-				wizard.setHeading("New SnapShot Wizard");
+				wizard.setHeading("New Users Wizard");
 				
 				List<WizardPage> wizardPageList = new ArrayList<WizardPage>();
 				
+				welcomePage = new WelcomePage(icons);
 				welcomePage.setPageDescription("Welcome");
 				welcomePage.setStepDescription("Welcome");
 				
+				userInformationPage = new UserInformationPage(constants, icons);
 				userInformationPage.setPageDescription("User Information");
 				userInformationPage.setStepDescription("User Information");
 				
+				finishPage = new FinishPage(icons, constants);
+				finishPage.setPageDescription("Summary");
+				finishPage.setStepDescription("Summary");
+				
 				wizardPageList.add(welcomePage);
 				wizardPageList.add(userInformationPage);
+				wizardPageList.add(finishPage);
 				wizard.addPages(wizardPageList);
 				
 				wizard.show();
