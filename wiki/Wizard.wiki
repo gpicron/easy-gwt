@@ -1,13 +1,13 @@
 #summary Wizard
 
-= Introduction =
+Implementing a Wizard has never been easier. The Wizard consists of three main components all of which are depicted below:
 
-Add your content here.
+  * Wizard Dialog.
+  * Wizard Pages.
+  * Wizard Model.
 
+=== Wizard Dialog ===
 
-= Details =
+=== Wizard Pages ===
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+=== Wizard Model ===
