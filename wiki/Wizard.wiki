@@ -24,7 +24,7 @@ The Wizard Dialog is the entry point to the creation of a new Wizard. A new inst
 
 === Wizard Pages ===
 
-Wizard Pages are the elements that compose the Wizard. To create a Wizard Page all that is needed is to create a class that extends WizardPage.
+Wizard Pages are the elements that compose the Wizard. To create a Wizard Page all that is needed is to create a class that extends Wizard Page.
 
 {{{
    public class WelcomePage extends WizardPage {
@@ -47,6 +47,10 @@ A Wizard Page typically overrides two methods:
       // it's automatically invoked by the framework whenever the current page is about to hide.
    }
 }}}
+
+Adding pages to the Wizard is extremely simple:
+
+  * Use the convenience method {{{addPage}}} that is part of the Wizard Dialog implementation or invoke {{{addPages}}} and pass in a List of Wizard Pages.
 
 === Wizard Model ===
 
