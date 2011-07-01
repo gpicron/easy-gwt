@@ -104,7 +104,9 @@ Let's finally combine all the things mentioned above and see what it would take 
 
 }}}
 
-*Easy isn't it?* Yes just:
+=== Summary ===
 
    * Implement Authenticator.
    * Override onSuccess.
+
+_*Now, that was easy, wasn't it?*_
