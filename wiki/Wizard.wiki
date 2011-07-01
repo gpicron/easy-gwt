@@ -24,4 +24,32 @@ The Wizard Dialog is the entry point to the creation of a new Wizard. A new inst
 
 === Wizard Pages ===
 
+Wizard Pages are the elements that compose the Wizard. To create a Wizard Page all that is needed is to create a class that extends WizardPage.
+
+{{{
+   public class WelcomePage extends WizardPage {
+
+   }
+}}}
+
+A Wizard Page typically overrides two methods:
+
+{{{
+   @Override
+   public void renderPage() {
+      // Will be invoked only once when the Page is rendered as the user
+      // is navigating through the different pages composing the Wizard.
+   }
+
+   @Override
+   public void saveModel() {
+      // This method is typically used to save the state of the model and
+      // it's automatically invoked by the framework whenever the current page is about to hide.
+   }
+}}}
+
 === Wizard Model ===
+
+A Wizard model acts as a persistence mechanism that can be accessed from all pages to save the state of each one of the Page's elements.
+
+There is an already implemented Wizard Model class that provides a convenience method to store properties as strings in a Map with values being objects allowing the developer to essentially save the state of pretty much anything. However should the developer decide to use a custom implementation for the model all that is needed is to ensure that the custom model implements WizardModelInterface.
