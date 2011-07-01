@@ -1,4 +1,5 @@
 #summary Getting Started Quickly.
+#labels Featured
 
 === Setup your development environment ===
 
