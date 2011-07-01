@@ -8,6 +8,20 @@ Implementing a Wizard has never been easier. The Wizard consists of three main c
 
 === Wizard Dialog ===
 
+The Wizard Dialog is the entry point to the creation of a new Wizard. A new instance can be obtained by:
+
+{{{
+   WizardDialog wizard = new WizardDialog() {
+					
+      @Override
+      public void finish() {
+         // Invoked when the user successfully completes all the Wizard Pages and clicks on
+         // the Finish button.
+      }
+   }
+
+}}}
+
 === Wizard Pages ===
 
 === Wizard Model ===
