@@ -31,6 +31,9 @@ public interface SampleIcons extends ClientBundle {
 	
 	@Source("icons/delete.png")
 	ImageResource delete();
+	
+	@Source("icons/add32.32.png")
+	ImageResource add32By32();
 
 
 
