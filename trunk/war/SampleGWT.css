@@ -1,17 +1,17 @@
 /** Add css rules here for your application. */
 
-#dockContainer {
+/*#dockContainer {
 	display: table;
 	margin: 0 auto;
-	text-align: center; /* fixes IE bug */
+	text-align: center;  fixes IE bug 
 }
 
 #dockContainer>div {
-	display: inline-block; /* fixes IE bug */
+	display: inline-block;  fixes IE bug 
 }
 
 #dockContainer>div {
-	display: inline; /* fixes IE bug */
+	display: inline;  fixes IE bug 
 }
 
 #dockContainer>div {
@@ -33,4 +33,4 @@
 	height: 88px;
 	overflow: hidden;
 	padding: 0 10px;
-}
+}*/
