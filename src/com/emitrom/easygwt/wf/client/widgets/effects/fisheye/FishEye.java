@@ -51,16 +51,25 @@ import java.util.List;
 
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.core.client.JsArrayNumber;
+import com.google.gwt.dom.client.DivElement;
+import com.google.gwt.dom.client.Document;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 
 public class FishEye extends Widget implements IsWidget {
 	
-	/** <p>Creates a MacStyleDock. A MacStyleDock is a row of images that expand as the
+	private static final String ID = "id";
+	private static final String DOCK = "dock";
+	private static final String DOCK_CONTAINER = "dockContainer";
+	
+	private JsArray<ImageDetails> imageDetails;
+	private int minimumSize, maximumSize, range;
+	
+	/** <pre>Creates a MacStyleDock. A MacStyleDock is a row of images that expand as the
 	 * mouse pointer moves over them. The images are created as children of the
 	 * specified node with the specified minimum and maximum sizes. Two other
 	 * parameters specify the images to be used and the range of expansion. The
-	 * parameters are</p>:
+	 * parameters are</pre>:
 	 *
 	 * <ul>
 	 *  <li>		  	List<FishEyeImage> imageResourceList.</li>
@@ -69,14 +78,30 @@ public class FishEye extends Widget implements IsWidget {
 	 * 	<li>range		The range of expansion, in icons. This must be an integer.</li>
 	 * </ul>
 	 */
-	public FishEye(List<FishEyeImage> imageResourceList,
+	public FishEye(List<FishEyeImage> fishImageList,
 			int minimumSize, int maximumSize, int range) {
 		
-//		String node = getParent().getElement().getNodeName();
-		JsArray<ImageDetails> imageDetails = getImageDetails(imageResourceList);
+		imageDetails = getImageDetails(fishImageList);
+		this.minimumSize = minimumSize;
+		this.maximumSize = maximumSize;
+		this.range = range;
 		
-		macStyleDock("dock", imageDetails, minimumSize, maximumSize, range);
+		DivElement dockContainerDiv = Document.get().createDivElement();
+		dockContainerDiv.setAttribute(ID, DOCK_CONTAINER);
 		
+		DivElement dockDiv = Document.get().createDivElement();
+		dockDiv.setAttribute(ID, DOCK);
+		
+		dockContainerDiv.appendChild(dockDiv);
+
+		setElement(dockContainerDiv);
+		
+	}
+	
+	@Override
+	protected void onAttach() {
+		super.onAttach();
+		macStyleDock(DOCK, imageDetails, minimumSize, maximumSize, range);
 	}
 
 	@Override
