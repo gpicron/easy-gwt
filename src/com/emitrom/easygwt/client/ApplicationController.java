@@ -15,18 +15,15 @@ import com.emitrom.easygwt.wf.client.widgets.effects.fisheye.FishEyeClickHandler
 import com.emitrom.easygwt.wf.client.widgets.effects.fisheye.FishEyeImage;
 import com.extjs.gxt.ui.client.event.ButtonEvent;
 import com.extjs.gxt.ui.client.event.SelectionListener;
+import com.extjs.gxt.ui.client.widget.MessageBox;
 import com.extjs.gxt.ui.client.widget.button.Button;
 import com.extjs.gxt.ui.client.widget.form.LabelField;
 import com.extjs.gxt.ui.client.widget.toolbar.FillToolItem;
 import com.extjs.gxt.ui.client.widget.toolbar.SeparatorToolItem;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.AbstractImagePrototype;
-import com.google.gwt.user.client.ui.RootPanel;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -47,10 +44,10 @@ public class ApplicationController implements EntryPoint {
 		/**
 		 * Authenticate
 		 */
-//		new SampleLoginAuthenticator() {
-//
-//			@Override
-//			public void onSuccess() {
+		new SampleLoginAuthenticator() {
+
+			@Override
+			public void onSuccess() {
 				/**
 				 * Column View Sample
 				 */
@@ -59,7 +56,7 @@ public class ApplicationController implements EntryPoint {
 				columnView.getNorthPanel().getNorthPanelToolBar().add(new FillToolItem());
 				
 				LabelField loggedInUser = new LabelField();
-//				loggedInUser.setValue("<b>" + loginDialog.getUsernameTextField().getValue() + "<b/>"); 
+				loggedInUser.setValue("<b>" + loginDialog.getUsernameTextField().getValue() + "<b/>"); 
 				
 				Button logoutButton = new Button();
 				logoutButton.setIcon(AbstractImagePrototype.create(icons.doorOut()));
@@ -67,123 +64,14 @@ public class ApplicationController implements EntryPoint {
 				logoutButton.addSelectionListener(new SelectionListener<ButtonEvent>() {
 					@Override
 					public void componentSelected(ButtonEvent ce) {
-//						logout();
+						logout();
 					}
 				});
 				
 				columnView.getNorthPanel().getNorthPanelToolBar().add(loggedInUser);
 				
 				
-				/**
-				 * Start HERE
-				 */
-				List<FishEyeImage> fishImageList = new ArrayList<FishEyeImage>();
-
-				FishEyeImage fishEyeImage = new FishEyeImage();
-
-				fishEyeImage.setImageName("resources/easygwt/images/icons/mac-icon-");
-				fishEyeImage.setLowSize(40);
-				fishEyeImage.setHighSize(80);
-				fishEyeImage.setExtension(".png");
-				fishEyeImage.setClickHandler(new FishEyeClickHandler() {
-
-					@Override
-					public void onClick() {
-						System.out.println("HERE IN 1");
-					}
-				});
-				fishImageList.add(fishEyeImage);
-
-				fishEyeImage = new FishEyeImage();
-				fishEyeImage.setImageName("resources/easygwt/images/icons/mac-icon-");
-				fishEyeImage.setLowSize(40);
-				fishEyeImage.setHighSize(80);
-				fishEyeImage.setExtension(".png");
-				fishEyeImage.setClickHandler(new FishEyeClickHandler() {
-
-					@Override
-					public void onClick() {
-						System.out.println("HERE IN 2");
-					}
-				});
-				fishImageList.add(fishEyeImage);
-				
-				fishEyeImage = new FishEyeImage();
-				fishEyeImage.setImageName("resources/easygwt/images/icons/mac-icon-");
-				fishEyeImage.setLowSize(40);
-				fishEyeImage.setHighSize(80);
-				fishEyeImage.setExtension(".png");
-				fishEyeImage.setClickHandler(new FishEyeClickHandler() {
-
-					@Override
-					public void onClick() {
-						System.out.println("HERE IN 3");
-					}
-				});
-				fishImageList.add(fishEyeImage);
-
-				fishEyeImage = new FishEyeImage();
-				fishEyeImage.setImageName("resources/easygwt/images/icons/mac-icon-");
-				fishEyeImage.setLowSize(40);
-				fishEyeImage.setHighSize(80);
-				fishEyeImage.setExtension(".png");
-				fishEyeImage.setClickHandler(new FishEyeClickHandler() {
-
-					@Override
-					public void onClick() {
-						System.out.println("HERE IN 4");
-					}
-				});
-				fishImageList.add(fishEyeImage);
-
-				fishEyeImage = new FishEyeImage();
-				fishEyeImage.setImageName("resources/easygwt/images/icons/mac-icon-");
-				fishEyeImage.setLowSize(40);
-				fishEyeImage.setHighSize(80);
-				fishEyeImage.setExtension(".png");
-				fishEyeImage.setClickHandler(new FishEyeClickHandler() {
-
-					@Override
-					public void onClick() {
-						System.out.println("HERE IN 5");
-					}
-				});
-				fishImageList.add(fishEyeImage);
-
-				fishEyeImage = new FishEyeImage();
-				fishEyeImage.setImageName("resources/easygwt/images/icons/mac-icon-");
-				fishEyeImage.setLowSize(40);
-				fishEyeImage.setHighSize(80);
-				fishEyeImage.setExtension(".png");
-				fishEyeImage.setClickHandler(new FishEyeClickHandler() {
-
-					@Override
-					public void onClick() {
-						System.out.println("HERE IN 6");
-					}
-				});
-				fishImageList.add(fishEyeImage);
-
-				fishEyeImage = new FishEyeImage();
-				fishEyeImage.setImageName("resources/easygwt/images/icons/mac-icon-");
-				fishEyeImage.setLowSize(40);
-				fishEyeImage.setHighSize(80);
-				fishEyeImage.setExtension(".png");
-				fishEyeImage.setClickHandler(new FishEyeClickHandler() {
-
-					@Override
-					public void onClick() {
-						System.out.println("HERE IN 7");
-					}
-				});
-				fishImageList.add(fishEyeImage);
-
-
-				/**
-				 * END HERE
-				 */
-				
-				columnView.getSouthPanel().add(new FishEye(fishImageList, 40, 80, 2));
+				columnView.getSouthPanel().add(new FishEye(getFishImageList(), 40, 80, 2));
 				columnView.getNorthPanel().getNorthPanelToolBar().add(new SeparatorToolItem());
 				columnView.getNorthPanel().getNorthPanelToolBar().add(logoutButton);
 				
@@ -203,9 +91,116 @@ public class ApplicationController implements EntryPoint {
 				columnView.addNavigationItems(navigationParentsList);
 
 			}
-			
-//		};
+
+		};
 		
-//	}
+	}
+	
+	private List<FishEyeImage> getFishImageList() {
+		
+		List<FishEyeImage> fishImageList = new ArrayList<FishEyeImage>();
+
+		FishEyeImage fishEyeImage = new FishEyeImage();
+
+		fishEyeImage.setImageName("resources/easygwt/images/icons/mac-icon-");
+		fishEyeImage.setLowSize(40);
+		fishEyeImage.setHighSize(80);
+		fishEyeImage.setExtension(".png");
+		fishEyeImage.setClickHandler(new FishEyeClickHandler() {
+
+			@Override
+			public void onClick() {
+				MessageBox.alert("Click Handler", "Activated Click Handler", null);
+			}
+		});
+		fishImageList.add(fishEyeImage);
+
+		fishEyeImage = new FishEyeImage();
+		fishEyeImage.setImageName("resources/easygwt/images/icons/mac-icon-");
+		fishEyeImage.setLowSize(40);
+		fishEyeImage.setHighSize(80);
+		fishEyeImage.setExtension(".png");
+		fishEyeImage.setClickHandler(new FishEyeClickHandler() {
+
+			@Override
+			public void onClick() {
+				MessageBox.alert("Click Handler", "Activated Click Handler", null);
+			}
+		});
+		fishImageList.add(fishEyeImage);
+		
+		fishEyeImage = new FishEyeImage();
+		fishEyeImage.setImageName("resources/easygwt/images/icons/mac-icon-");
+		fishEyeImage.setLowSize(40);
+		fishEyeImage.setHighSize(80);
+		fishEyeImage.setExtension(".png");
+		fishEyeImage.setClickHandler(new FishEyeClickHandler() {
+
+			@Override
+			public void onClick() {
+				MessageBox.alert("Click Handler", "Activated Click Handler", null);
+			}
+		});
+		fishImageList.add(fishEyeImage);
+
+		fishEyeImage = new FishEyeImage();
+		fishEyeImage.setImageName("resources/easygwt/images/icons/mac-icon-");
+		fishEyeImage.setLowSize(40);
+		fishEyeImage.setHighSize(80);
+		fishEyeImage.setExtension(".png");
+		fishEyeImage.setClickHandler(new FishEyeClickHandler() {
+
+			@Override
+			public void onClick() {
+				MessageBox.alert("Click Handler", "Activated Click Handler", null);
+			}
+		});
+		fishImageList.add(fishEyeImage);
+
+		fishEyeImage = new FishEyeImage();
+		fishEyeImage.setImageName("resources/easygwt/images/icons/mac-icon-");
+		fishEyeImage.setLowSize(40);
+		fishEyeImage.setHighSize(80);
+		fishEyeImage.setExtension(".png");
+		fishEyeImage.setClickHandler(new FishEyeClickHandler() {
+
+			@Override
+			public void onClick() {
+				MessageBox.alert("Click Handler", "Activated Click Handler", null);
+			}
+		});
+		fishImageList.add(fishEyeImage);
+
+		fishEyeImage = new FishEyeImage();
+		fishEyeImage.setImageName("resources/easygwt/images/icons/mac-icon-");
+		fishEyeImage.setLowSize(40);
+		fishEyeImage.setHighSize(80);
+		fishEyeImage.setExtension(".png");
+		fishEyeImage.setClickHandler(new FishEyeClickHandler() {
+
+			@Override
+			public void onClick() {
+				MessageBox.alert("Click Handler", "Activated Click Handler", null);
+			}
+		});
+		fishImageList.add(fishEyeImage);
+
+		fishEyeImage = new FishEyeImage();
+		fishEyeImage.setImageName("resources/easygwt/images/icons/mac-icon-");
+		fishEyeImage.setLowSize(40);
+		fishEyeImage.setHighSize(80);
+		fishEyeImage.setExtension(".png");
+		fishEyeImage.setClickHandler(new FishEyeClickHandler() {
+
+			@Override
+			public void onClick() {
+				MessageBox.alert("Click Handler", "Activated Click Handler", null);
+			}
+		});
+		fishImageList.add(fishEyeImage);
+		
+		return fishImageList;
+		
+	}
 	
 }
