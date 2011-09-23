@@ -59,7 +59,7 @@ public class ColumnViewPort extends Viewport {
 	private static int westSize = 200;
 	private ColumnCenterPanel centerPanel;
 	private ColumnSouthPanel southPanel;
-	private static int southSize = 100;
+	private static int southSize = 30;
 	private List<ColumnNavigationParent> navigationParents;
 
 	public static ColumnViewPort getInstance(int nSize, int eSize, int sSize,
