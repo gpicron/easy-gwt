@@ -25,15 +25,12 @@ import com.extjs.gxt.ui.client.event.MenuEvent;
 import com.extjs.gxt.ui.client.state.StateManager;
 import com.extjs.gxt.ui.client.util.CSS;
 import com.extjs.gxt.ui.client.widget.ContentPanel;
-import com.extjs.gxt.ui.client.widget.HorizontalPanel;
 import com.extjs.gxt.ui.client.widget.button.Button;
 import com.extjs.gxt.ui.client.widget.menu.CheckMenuItem;
 import com.extjs.gxt.ui.client.widget.menu.Menu;
 import com.extjs.gxt.ui.client.widget.menu.MenuItem;
 import com.extjs.gxt.ui.client.widget.toolbar.ToolBar;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.AbstractImagePrototype;
-import com.google.gwt.user.client.ui.Image;
 
 /**
  * This is the North Panel for EasyGWT.
@@ -51,8 +48,6 @@ public class ColumnNorthPanel extends ContentPanel implements ColumnPanelInterfa
 	private CheckMenuItem slateStyle;
 	private CheckMenuItem accessStyle;
 	
-	private static final String LEFT_BANNER_IMAGE_PATH = "resources/easygwt/images/left_banner.png";
-	private static final String RIGHT_BANNER_IMAGE_PATH = "resources/easygwt/images/right_banner.png";
 	private static final String STYLE = "style";
 	private static final String GXT_GRAY_CSS_ID = "gxt-gray";
 	private static final String GXT_GRAY_CSS_PATH = "resources/gxt/css/gxt-gray.css";
@@ -66,13 +61,6 @@ public class ColumnNorthPanel extends ContentPanel implements ColumnPanelInterfa
 		super();
 		setHeaderVisible(false);
 		setBodyStyle("background-color: black;");
-		add(new Image(GWT.getHostPageBaseURL() + LEFT_BANNER_IMAGE_PATH));
-
-		HorizontalPanel sideBannerPanel = new HorizontalPanel();
-		sideBannerPanel.setStyleAttribute("float", "right");
-		sideBannerPanel.add(new Image(GWT.getHostPageBaseURL() + RIGHT_BANNER_IMAGE_PATH));
-		add(sideBannerPanel);
-		
 		setBodyBorder(false);
 		northPanelToolBar = new ToolBar();
 		
