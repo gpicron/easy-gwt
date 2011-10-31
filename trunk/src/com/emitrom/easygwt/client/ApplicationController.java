@@ -6,6 +6,7 @@ import java.util.List;
 import com.emitrom.easygwt.client.core.authentication.SampleLoginAuthenticator;
 import com.emitrom.easygwt.client.core.injection.SampleInjector;
 import com.emitrom.easygwt.client.resources.SampleIcons;
+import com.emitrom.easygwt.client.resources.SampleImages;
 import com.emitrom.easygwt.client.resources.I18N.SampleConstants;
 import com.emitrom.easygwt.wf.client.column.core.ColumnNavigationChild;
 import com.emitrom.easygwt.wf.client.column.core.ColumnNavigationParent;
@@ -15,15 +16,17 @@ import com.emitrom.easygwt.wf.client.widgets.effects.fisheye.FishEyeClickHandler
 import com.emitrom.easygwt.wf.client.widgets.effects.fisheye.FishEyeImage;
 import com.extjs.gxt.ui.client.event.ButtonEvent;
 import com.extjs.gxt.ui.client.event.SelectionListener;
+import com.extjs.gxt.ui.client.widget.HorizontalPanel;
+import com.extjs.gxt.ui.client.widget.Html;
 import com.extjs.gxt.ui.client.widget.MessageBox;
 import com.extjs.gxt.ui.client.widget.button.Button;
-import com.extjs.gxt.ui.client.widget.form.LabelField;
 import com.extjs.gxt.ui.client.widget.toolbar.FillToolItem;
 import com.extjs.gxt.ui.client.widget.toolbar.SeparatorToolItem;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.AbstractImagePrototype;
+import com.google.gwt.user.client.ui.Image;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -31,6 +34,7 @@ import com.google.gwt.user.client.ui.AbstractImagePrototype;
 public class ApplicationController implements EntryPoint {
 	
 	private static SampleIcons icons = GWT.create(SampleIcons.class);
+	private static SampleImages images = GWT.create(SampleImages.class);
 	private static SampleConstants constants = GWT.create(SampleConstants.class);
 	private static SampleInjector injector = GWT.create(SampleInjector.class);
 	
@@ -51,12 +55,17 @@ public class ApplicationController implements EntryPoint {
 				/**
 				 * Column View Sample
 				 */
-				ColumnViewPort columnView = ColumnViewPort.getInstance();
+				ColumnViewPort columnView = ColumnViewPort.getInstance(100, 200, 100, 200);
+				
+				columnView.getNorthPanel().add(new Image(images.leftBanner()));
+				
+				HorizontalPanel imagePanel = new HorizontalPanel();
+				imagePanel.setStyleAttribute("float", "right");
+				imagePanel.add(new Image(images.rightBanner()));
+				
+				columnView.getNorthPanel().add(imagePanel);
 				
 				columnView.getNorthPanel().getNorthPanelToolBar().add(new FillToolItem());
-				
-				LabelField loggedInUser = new LabelField();
-				loggedInUser.setValue("<b>" + loginDialog.getUsernameTextField().getValue() + "<b/>"); 
 				
 				Button logoutButton = new Button();
 				logoutButton.setIcon(AbstractImagePrototype.create(icons.doorOut()));
@@ -67,9 +76,8 @@ public class ApplicationController implements EntryPoint {
 						logout();
 					}
 				});
-				
-				columnView.getNorthPanel().getNorthPanelToolBar().add(loggedInUser);
-				
+
+				columnView.getNorthPanel().getNorthPanelToolBar().add(new Html("<b>" + loginDialog.getUsernameTextField().getValue() + "<b/>"));
 				
 				columnView.getSouthPanel().add(new FishEye(getFishImageList(), 40, 80, 2));
 				columnView.getNorthPanel().getNorthPanelToolBar().add(new SeparatorToolItem());
