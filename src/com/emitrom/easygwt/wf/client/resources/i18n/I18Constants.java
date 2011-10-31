@@ -107,4 +107,8 @@ public interface I18Constants extends Constants {
 	
 	@DefaultStringValue("at")
 	String at();
+
+	@DefaultStringValue("Host")
+    String hostTextFieldFieldLabel();
+	
 }
