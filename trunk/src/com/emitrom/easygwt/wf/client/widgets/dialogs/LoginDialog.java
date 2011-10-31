@@ -76,6 +76,7 @@ public class LoginDialog extends Dialog implements IsWidget {
 	private ToolBar loginDialogToolBar;
 	
 	private LabelField loginFailureMessageLabelField;
+	private TextField<String> hostTextField;
 	private TextField<String> usernameTextField;
 	private TextField<String> passwordTextField;
 
@@ -100,10 +101,11 @@ public class LoginDialog extends Dialog implements IsWidget {
 		setButtonAlign(HorizontalAlignment.CENTER);
 		setIcon(AbstractImagePrototype.create(Util.getIcons().lock()));
 		setClosable(false);
-		setSize(420, 255);
+		setSize(420, 250);
 		setButtons("");
 		setResizable(false);
 		setBottomComponent(getLoginDialogToolBar());
+		getBottomComponent().setVisible(false);
 
 	    addLoginComponents();
 
@@ -181,6 +183,11 @@ public class LoginDialog extends Dialog implements IsWidget {
 	    loginFailureMessageLabelField.setStyleAttribute("color", "red");
 	    loginFailureMessageLabelField.setVisible(false);
 	    
+	    hostTextField = new TextField<String>();
+	    hostTextField.setAllowBlank(false);
+	    hostTextField.setFieldLabel(Util.getConstants().hostTextFieldFieldLabel());
+	    hostTextField.setVisible(false);
+	    
 		usernameTextField = new TextField<String>();
 		usernameTextField.setAllowBlank(false);
 		usernameTextField.setFieldLabel(Util.getConstants().usernameTextFieldFieldLabel());
@@ -238,6 +245,7 @@ public class LoginDialog extends Dialog implements IsWidget {
         });
 		
 		loginFormPanel.add(loginFailureMessageLabelField);
+		loginFormPanel.add(hostTextField);
 		loginFormPanel.add(usernameTextField);
 		loginFormPanel.add(passwordTextField);
 	    loginFormPanel.add(adapterField);
@@ -246,7 +254,6 @@ public class LoginDialog extends Dialog implements IsWidget {
 	    formButtonBinding.addButton(loginButton);
 	    formButtonBinding.addButton(resetButton);
 	    
-	
 	    VerticalPanel fieldsAndButtonPanel = new VerticalPanel();
 	    fieldsAndButtonPanel.add(loginFormPanel);
 	
@@ -342,6 +349,20 @@ public class LoginDialog extends Dialog implements IsWidget {
 	}
 
 	/**
+     * @return the hostTextField
+     */
+    public TextField<String> getHostTextField() {
+        return hostTextField;
+    }
+
+    /**
+     * @param hostTextField the hostTextField to set
+     */
+    public void setHostTextField(TextField<String> hostTextField) {
+        this.hostTextField = hostTextField;
+    }
+
+    /**
 	 * @return the passwordTextField
 	 */
 	public TextField<String> getPasswordTextField() {
