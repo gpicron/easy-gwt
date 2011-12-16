@@ -21,6 +21,7 @@ package com.emitrom.easygwt.wf.client.widgets.dialogs;
 
 import com.emitrom.easygwt.wf.client.utils.Util;
 import com.extjs.gxt.ui.client.Style.LayoutRegion;
+import com.extjs.gxt.ui.client.Style.Scroll;
 import com.extjs.gxt.ui.client.event.ButtonEvent;
 import com.extjs.gxt.ui.client.event.SelectionListener;
 import com.extjs.gxt.ui.client.util.Margins;
@@ -95,8 +96,10 @@ public class ErrorDialog extends Dialog implements IsWidget {
      * @param details
      * @param throwable
      */
-    public ErrorDialog(String title, String message, String details, Throwable throwable) {        
+    public ErrorDialog(String title, String message, String details, Throwable throwable) {
+        
         detailsButton = new Button(Util.getConstants().detailsButtonHeading());
+        setScrollMode(Scroll.AUTO);
                 
         addButton(detailsButton);
         detailsButton.setEnabled(false);
