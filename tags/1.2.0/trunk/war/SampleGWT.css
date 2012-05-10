@@ -1,0 +1,36 @@
+/** Add css rules here for your application. */
+
+/*#dockContainer {
+	display: table;
+	margin: 0 auto;
+	text-align: center;  fixes IE bug 
+}
+
+#dockContainer>div {
+	display: inline-block;  fixes IE bug 
+}
+
+#dockContainer>div {
+	display: inline;  fixes IE bug 
+}
+
+#dockContainer>div {
+	display: table-cell;
+	text-align: left;
+	background: url('resources/easygwt/images/icons/dock-centre-40.png')
+		repeat-x 0 64px;
+	border-bottom: 1px solid rgb(220, 220, 200);
+}
+
+#dockContainer>div>div {
+	background: url('resources/easygwt/images/icons/dock-right-40.png')
+		no-repeat right 64px;
+}
+
+#dockContainer>div>div>div {
+	background: url('resources/easygwt/images/icons/dock-left-40.png')
+		no-repeat left 64px;
+	height: 88px;
+	overflow: hidden;
+	padding: 0 10px;
+}*/
