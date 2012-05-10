@@ -1,0 +1,9 @@
+com.emitrom.easygwt.wf.client.authentication
+com.emitrom.easygwt.wf.client.column.core
+com.emitrom.easygwt.wf.client.column.events
+com.emitrom.easygwt.wf.client.events
+com.emitrom.easygwt.wf.client.resources
+com.emitrom.easygwt.wf.client.resources.i18n
+com.emitrom.easygwt.wf.client.utils
+com.emitrom.easygwt.wf.client.widgets.dialogs
+com.emitrom.easygwt.wf.client.wizard
